@@ -1,0 +1,11 @@
+.scroll-hide{
+    scrollbar-width: none;
+
+}
+@media screen and (max-width:770px) {
+    .collection{
+        /* display: grid; */
+        grid-template-columns: 1fr 1fr;
+    }
+    
+}

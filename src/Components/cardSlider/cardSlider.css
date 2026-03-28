@@ -1,0 +1,7 @@
+
+.prev-btn1 ,.next-btn1{
+    position: absolute;
+    top:35%;
+    filter:drop-shadow(2px 2px 4px rgba(12,12,12,0.9));
+    z-index:1;
+}
