@@ -1,6 +1,25 @@
-@media screen and (max-width:744px) {
+ .like{
+    background-color:rgba(128,111 ,111 ,0.1 ) ;
+ }
+ @media screen and (max-width:744px) {
     .card {
         font-size: 14px;
+    }
+    .like{
+        color: black;
+        top: auto;
+        background-color: transparent;
+         bottom:30px;
+         backdrop-filter: none;
+
+    }
+    .card .heading{
+        border-bottom: 0px;
+    }
+}
+@media screen and (max-width:500px) {
+     .card {
+        font-size: 12px;
     }
     
 }

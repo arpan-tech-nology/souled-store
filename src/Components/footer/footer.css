@@ -66,4 +66,7 @@
     .footer .img-width{
         width: 100px    ;
     }
+    .footer .menu-heading{
+        font-size: 18px;
+    }
 }

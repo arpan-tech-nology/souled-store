@@ -4,14 +4,15 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css';
 // import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Autoplay, Navigation } from 'swiper/modules';
+import { Autoplay, Navigation ,Pagination } from 'swiper/modules';
+import { products } from "../../menPage";
 
 // import './swiper.css'
-export default function CardSlider({ products, children }) {
+export default function CardSlider() {
     return (
         <>
             {/* <div className="w-full flex justify-center text-[28px] font-bold h-[100px] items-center"  >{children}</div> */}
-            <div className="w-full flex justify-center items-center relative">
+            <div className=" collections w-full flex justify-center items-center relative">
                 <div className="w-[90%]" >
                     <Swiper
 
@@ -23,17 +24,22 @@ export default function CardSlider({ products, children }) {
                         loop={true}
                         spaceBetween={10}
                         slidesPerView={2}
+                        slidesPerGroup={2}
                         centeredSlides={false}
                         // slidesPerGroupSkip={1}
                         grabCursor={true}
                         breakpoints={{
                             770: {
                                 slidesPerView: 4,
-                                // slidesPerGroup: 4,
+                                slidesPerGroup: 4,
                             },
 
                            
                         }}
+                         pagination={{
+          clickable: true,
+        }}
+
 
                         // autoplay={{
                         //     delay: 2000,
@@ -43,11 +49,11 @@ export default function CardSlider({ products, children }) {
 
 
 
-                        modules={[Autoplay, Navigation]}
+                        modules={[Autoplay, Navigation ,Pagination]}
                     >
                         {
                             products.map((item) => (
-                                <SwiperSlide><Card {...item} /></SwiperSlide>
+                                <SwiperSlide key={item.product_id}><Card product={item} /></SwiperSlide>
                             ))
                         }
 

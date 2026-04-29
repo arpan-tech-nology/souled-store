@@ -27,7 +27,7 @@ export default function Footer() {
             <div className="footer-grid grid grid-cols-4 w-full ">
               {/* <div className="   justify-between"> */}
               <div>
-                <h3 className="text-[#ed2e30] font-bold text-[20px] pb-3">NEED HELP</h3>
+                <h3 className="menu-heading text-[#ed2e30] font-bold text-[20px] pb-3">NEED HELP</h3>
                 <ul className="text-[#58595b] font-bold text-[14px]">
                   <li className="pb-3">Contact Us</li>
                   <li className="pb-3">Track Oeder</li>
@@ -37,7 +37,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-[#ed2e30] font-bold text-[20px] pb-3">COMPANY</h3>
+                <h3 className="menu-heading text-[#ed2e30] font-bold text-[20px] pb-3">COMPANY</h3>
                 <ul className="text-[#58595b] font-bold text-[14px]">
 
                   <li className="pb-3">About Us</li>
@@ -50,7 +50,7 @@ export default function Footer() {
               {/* </div> */}
               {/* <div className="flex w-[40%]  justify-between"> */}
               <div>
-                <h3 className="text-[#ed2e30] font-bold text-[20px] pb-3">MORE INFO</h3>
+                <h3 className="menu-heading text-[#ed2e30] font-bold text-[20px] pb-3">MORE INFO</h3>
                 <ul className="text-[#58595b] font-bold text-[14px]">
 
                   <li className="pb-3">T&C</li>
@@ -61,7 +61,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-[#ed2e30] font-bold text-[20px] pb-3">STORE NEAR ME</h3>
+                <h3 className="menu-heading text-[#ed2e30] font-bold text-[20px] pb-3">STORE NEAR ME</h3>
                 <ul className="text-[#58595b] font-bold text-[14px]">
 
                   <li className="pb-3">Mumbai</li>
