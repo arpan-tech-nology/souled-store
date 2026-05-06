@@ -28,7 +28,7 @@ export default function Cart() {
                     <div>- - - - - - - - - - -</div>
                     <div>PAYMENT</div>
                 </div>
-                {cartItems.length === 0 ? ( 
+                {cartItems.length === 0 ? (
                     <p className="text-[20px] font-bold flex justify-center items-center pt-4">Your cart is empty</p>
                 )
                     : (
@@ -84,7 +84,7 @@ export default function Cart() {
                                                         }, 2000);
                                                     }}
                                                     className={`rounded-[12px] border border-[#e3e3e3] pl-[33px] pr-[33px] pt-[8px] pb-[8px] 
-    ${removingId === item.id ? "bg-gray-400 text-white cursor-not-allowed" : "cursor-pointer"}`}
+                                                    ${removingId === item.id ? "bg-gray-400 text-white cursor-not-allowed" : "cursor-pointer"}`}
                                                 >
                                                     {removingId === item.id ? "REMOVING..." : "REMOVE"}
                                                 </div>

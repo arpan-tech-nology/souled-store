@@ -128,15 +128,15 @@ export default function Footer() {
             <div className="payment-container flex w-full items-center pt-4  pb-4">
               <div className="width w-[50%] flex items-center">
 
-                <p className="text-[14px] w-[300px]  text-[#4d4b4b] ">100% Secure Payments:</p>
-                <div className="pr-4 ">
+                <p className="text-[14px] w-[230px]  text-[#4d4b4b] ">100% Secure Payments:</p>
+                <div className=" ">
 
                   <img src="../images/payments-icon.avif"></img>
                 </div>
               </div>
-              <div className="width w-[45%] flex items-center ">
+              <div className="width w-[45%] flex items-center justify-center ">
                 <p className="shiping-container text-[14px] w-[130px] text-[#4d4b4b] border-l border-[#c1bfbf] pl-2  ">Shipping Partners:</p>
-                <div className="pb-5  flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 ">
                   <div className="w-[60px] "><img src="../images/dtdc (1).avif"></img></div>
                   <div className="w-[60px] "><img src="../images/delivery.webp"></img></div>
                   <div className="w-[60px] "><img src="../images/ECOM-Express.png"></img></div>

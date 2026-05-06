@@ -5,13 +5,14 @@ import 'swiper/css';
 // import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Navigation ,Pagination } from 'swiper/modules';
-import { products } from "../../menPage";
+import { allProducts } from "../../data/allProducts";
+
 
 // import './swiper.css'
-export default function CardSlider() {
+export default function CardSlider({products}) {
     return (
         <>
-            {/* <div className="w-full flex justify-center text-[28px] font-bold h-[100px] items-center"  >{children}</div> */}
+           
             <div className=" collections w-full flex justify-center items-center relative">
                 <div className="w-[90%]" >
                     <Swiper

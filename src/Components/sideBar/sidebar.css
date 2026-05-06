@@ -15,7 +15,7 @@ border-radius: 15px!important;
 
 
 }
-.sidebar  .slider .collections .next-btn1 ,.prev-btn1{
+.sidebar  .slider .collections .next-btn1 ,.sidebar  .slider .collections .prev-btn1{
     display: none;
 
 }

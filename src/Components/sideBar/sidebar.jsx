@@ -1,5 +1,6 @@
 import "./sidebar.css"
 export default function SideBar({children , isOpen , closeSideBar}){
+    
     if(isOpen){
         document.body.style.overflow='hidden';
     }
@@ -58,17 +59,6 @@ export default function SideBar({children , isOpen , closeSideBar}){
                     <li className=" border-b p-3 border-dashed  border-b-[#e5e5e5] flex items-center">Stores Near Me</li>
                     <li className=" border-b p-3 border-dashed  border-b-[#e5e5e5] flex items-center">Track My Order ?</li>
                     <li className=" border-b p-3 border-dashed  border-b-[#e5e5e5] flex items-center mb-5 justify-between">More <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></li>
-
-
-
-
-
-
-
-
-                    
-
-
                 </ul>
             </div>
             

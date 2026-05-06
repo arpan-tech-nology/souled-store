@@ -2,9 +2,16 @@ import { useState } from "react"
 import "./header.css"
 import { Link } from "react-router-dom"
 import { useLocation } from "react-router-dom"
+import { useSelector } from "react-redux";
 
 
-export default function Header({toggleSideBar}){
+export default function Header({toggleSideBar ,cartSideBar}){
+    const cartItems = useSelector(state => state.cart.items);
+
+const totalQuantity = cartItems.reduce((total, item) => {
+    return total + item.quantity;
+}, 0);
+    
     
     const location=useLocation();
 
@@ -72,15 +79,22 @@ export default function Header({toggleSideBar}){
                 <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#000000"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
 
                     </div>
-                    <Link to="/cart">
+                    {/* <Link to="/cart"> */}
                     
-                    <div className="icon relative">
+                    
+                    <div className="icon relative"onClick={cartSideBar}>
                         
 
                 <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#000000"><path d="M223.5-103.5Q200-127 200-160t23.5-56.5Q247-240 280-240t56.5 23.5Q360-193 360-160t-23.5 56.5Q313-80 280-80t-56.5-23.5Zm400 0Q600-127 600-160t23.5-56.5Q647-240 680-240t56.5 23.5Q760-193 760-160t-23.5 56.5Q713-80 680-80t-56.5-23.5ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+                    {totalQuantity > 0 && (
+        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-[2px] rounded-full">
+            {totalQuantity}
+        </span>
+    )}
                     </div>
+
                     
-                    </Link>
+                    {/* </Link> */}
 
             </div>
             </div>

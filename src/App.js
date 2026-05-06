@@ -9,6 +9,7 @@ import SneakerPage from "./sneakers";
 import LoginPage from "./Components/registrationPage/loginPage";
 import ProductPage from "./Components/productPage/productPage";
 import Cart from "./Components/Cart/Cart";
+import FilterCollections from "./Components/filterCollections/filterCollection";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/loginPage" element={<LoginPage></LoginPage>}></Route>
         <Route path="/product/:id" element={<ProductPage></ProductPage>}></Route>
         <Route path="/cart" element={<Cart/>}></Route>
+        <Route path="/filter" element={<FilterCollections></FilterCollections>}></Route>
 
 
         </Routes>

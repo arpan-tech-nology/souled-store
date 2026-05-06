@@ -229,6 +229,15 @@ function SneakerPage() {
 
 
     ]
+    const sneakersCategory=[
+     'Trending',
+      'Men High Top Sneakers',
+      'Men Low Top Sneakers',
+      'Men Mid Top Sneakers',
+      'Women Mid Top Sneakers',
+      'Women Low Top Sneakers',
+      'Socks'
+  ]
     const [sideBar ,setSideBar]=useState(false);
 
     return (
@@ -272,18 +281,8 @@ function SneakerPage() {
             <Heading>CURATED FOR YOU</Heading>
 
             <Curated image={curatedImg}></Curated>
-            <Collection products={sneakerProducts}>
-                <Button>Trending</Button>
-                <Button>Oversized T-Shirts</Button>
-                <Button>Shirts</Button>
-                <Button>Polos</Button>
-                <Button>Hoodies</Button>
-                <Button>Jackets</Button>
-                <Button>Men Pents</Button>
-                <Button>Men Jackets</Button>
-                <Button>Men Jogers</Button>
-                <Button>Men High Top Sneakers</Button>
-                <Button>Men Low Top Sneakers</Button>
+            <Collection products={sneakerProducts} buttons={sneakersCategory}>
+               
             </Collection>
 
             <Footer></Footer>

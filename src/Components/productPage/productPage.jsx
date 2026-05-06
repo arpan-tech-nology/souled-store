@@ -7,20 +7,32 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/CartSlice/cartSlice";
+import SideBar from "../sideBar/sidebar";
+import CartSideBar from "../cartSideBar/cartSideBar";
+import { allProducts } from "../../data/allProducts";
+import { useLocation } from "react-router-dom";
+
+// import CartSideBar from "../cartSideBar/cartSideBar";
 
 export default function ProductPage() {
 const { id } = useParams();
-const product= products.find(p=>p.product_id === id);
+const { state } = useLocation();
+    let product = state?.product
+    if (!product) {
+        product = allProducts.find(p => p.product_id === id);
+    }
+
 const [selectedSize,setSelectedSize]=useState("");
 const [selectedColor,setSelectedColor]=useState("");
 const [error, setError] = useState("");
 const [cartStatus, setCartStatus] = useState("idle");
-    const [quantity, setQuantity] = useState(1);
+const [quantity, setQuantity] = useState(1);
 const selectedVariant = product.variants.find(v => v.size === selectedSize &&
         v.color === selectedColor
     );
 
- 
+   const [sideBar, setSideBar] = useState(false);
+  const [cartSideBar ,setCartSideBar]=useState(false);
 const availableColors = selectedSize? product.variants.filter(v => v.size === selectedSize).map(v => v.color)
         : [];
 
@@ -75,10 +87,22 @@ const dispatch = useDispatch();
 
     return (
         <>
-            <Header />
+            {/* <Header /> */}
+             <Header toggleSideBar={() => setSideBar(true)} cartSideBar={()=>setCartSideBar(true)} />
+                      <CartSideBar isOpen={cartSideBar} closeSideBar={() => setCartSideBar(false)}/>
+            
+            
+                    {/* <SideBar isOpen={sideBar} closeSideBar={() => setSideBar(false)}>
+                      <CardSlider products={sideBarImages} ></CardSlider>
+            
+                      <MenCategory cards={menCategory}></MenCategory>
+                      <CardSlider products={sideBarImages} ></CardSlider>
+            
+            
+                    </SideBar> */}
             <div className="w-full flex justify-center items-center">
                 <div className="w-[80%]">
-                    <div className="flex text-[14px]">
+                    <div className="flex text-[14px] pt-8 pb-8">
                         <span className="text-[#a7a9ac] pl-1">Home </span>
                         <span className="text-[#a7a9ac] pl-1">/ Oversized Shirts </span>
                         <span className="text-[#a7a9ac] pl-1">/ The Souled Store </span>
@@ -92,14 +116,14 @@ const dispatch = useDispatch();
                             <img src={selectedVariant? `../images/${selectedVariant.image_url}` : `../images/${product?.image_url}`}></img>
                             <img src={selectedVariant? `../images/${selectedVariant.image_url}` : `../images/${product?.image_url}`}></img>
                         </div>
-                        <div className="w-[35%]">
+                        <div className="w-[35%] ">
                             <div>
                                 <h2 className="font-bold text-[25px] mb-0 pb-0 text-[#58595b]">{product.title}</h2>
                                 <p className="text-[#a7a9ac] text-[15px] pb-4 ">Cotton Linen Shirts</p>
                                 <hr className="w-full "></hr>
                               {/* <div className="flex"> */}
 
-                                <h2 className="font-bold text-[25px] mb-0 pb-0 flex items-center text-[#58595b]"><span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#58595b"><path d="M549-120 280-400v-80h140q53 0 91.5-34.5T558-600H240v-80h306q-17-35-50.5-57.5T420-760H240v-80h480v80H590q14 17 25 37t17 43h88v80h-81q-8 85-70 142.5T420-400h-29l269 280H549Z"/></svg></span>{displayPrice}</h2>
+                                <h2 className="font-bold text-[25px] mb-0 pb-0 pt-2 flex items-center text-[#58595b]"><span>$</span>{displayPrice}</h2>
                               {/* </div> */}
 
                                 <p className="text-[13px] text-[#888] pb-[10px]">Price incl. of all taxes</p>
@@ -119,21 +143,28 @@ const dispatch = useDispatch();
                              {variantData.color && (
                             <>
                                 <div className="pt-3 pb-3 gap-2 flex font-[700] text-[16px] text-[#58595b]">{variantData.color.label}</div>
-                                <div className="flex gap-2 pb-8">
+                                <div className="flex gap-2 pb-4">
                                     {Object.values(variantData.color.values[0]).map((val) => {
                                         const isAvailable = selectedSize ? availableColors.includes(val.key) : true;
 
                                         return (
-                                            <div key={val.key} onClick={() => isAvailable && setSelectedColor(val.key)} style={{ backgroundColor: val.color_code }} className={`rounded-full flex justify-center items-center w-[35px] h-[35px]   ${isAvailable ? "cursor-pointer" : "opacity-30"} ${selectedColor === val.key ? "border-2 border-black" : ""}`}></div>
+                                            <>
+                                            
+                                            <div className={`rounded-full p-1 border-2   ${selectedColor === val.key ? "border-black " : "border-white"}`}>
+                                            <div key={val.key} onClick={() => isAvailable && setSelectedColor(val.key)} style={{ backgroundColor: val.color_code }} className={`rounded-full flex justify-center items-center w-[25px] h-[25px]  ${isAvailable ? "cursor-pointer" : "opacity-30"}`}></div>
+
+                                            </div>
+
+                                            </>
                                         );
                                     })}
                                 </div>
                             </>
                         )}
-                                <div className="flex pt-4">
+                                <div className="flex ">
                                 <h3 className="font-bold text-[#58595b] text-[16px] ">Size not available?<span className="text-[16px] text-[#117a7a] font-normal border-b border-b-[#117a7a] ml-1">Notify Me</span></h3>
                               </div>
-                              <div className="flex items-center gap-3 pt-4">
+                              <div className="flex items-center gap-3 pt-4 pb-4">
                                 <p className="text-[#58595b] text-[15px]">Quantity</p>
                                 <select value={quantity} onChange={(e)=>setQuantity(Number(e.target.value))} className="border rounded-[5px] w-[45px] p-1 h-[30px] text-[14px] ">
                                   <option value={1}>01</option>
@@ -162,7 +193,7 @@ const dispatch = useDispatch();
 
                             {cartStatus === "added" && (
                                 <div className="bg-green-600 w-[229px] text-white pt-[8px] pb-[8px] flex justify-center items-center rounded-[3px] font-[700] text-[14px]">
-                                    ADDED ✓
+                                    ADDED 
                                 </div>
                             )}
                             <div className="text-[#148c8d] flex items-center w-[170px] justify-center border border-[#148c8d] h-[39px] "><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#148c8d"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>ADD TO WISHLIST</div>
@@ -179,7 +210,7 @@ const dispatch = useDispatch();
                               <div className="font-bold text-[#282d3] pt-4">
                                 Delivery Details
                               </div>
-                              <div className="border flex justify-between rounded-[6px] p-[6px] pl-[10px] pr-[10px] mt-[10px] mb-[10px]">
+                              <div className="border flex justify-between rounded-[6px]   pt-[10px] pb-[10px] pl-[10px] pr-[10px] mt-[15px] mb-[15px]">
                                 <input className="outline-none w-full text-[#58595b] font-[200] text-[16px] " placeholder="Enter Pincode"/>
                                 <div className="text-[16px] text-[#148c8d] font-[700]">CHECK</div>
                               </div>

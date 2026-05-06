@@ -226,6 +226,19 @@ function WomenPage() {
 
 
     ]
+    const womenCategories=[
+        "Trending",
+        "Women T-Shirts",
+        "Women Shirts",
+        "Women Jeans",
+        "Women Pants",
+        "Women Cropped Tops",
+        "Women Shorts",
+        "Women Dresses",
+        "Women Winter Wear",
+        "Women High Top Sneakers",
+        "Women Low Top Sneakers"
+  ]
     const [sideBar ,setSideBar]=useState(false);
 
     return (
@@ -266,21 +279,12 @@ function WomenPage() {
 
 
 
-            <MenCategory cards={womenCategory}></MenCategory>
+            <MenCategory cards={womenCategory} tag="women"></MenCategory>
             <Heading>CURATED FOR YOU</Heading>
 
             <Curated image={curatedImg}></Curated>
-            <Collection products={womenProducts}>
-                <Button>Trending</Button>
-                <Button>Women T-Shirts</Button>
-                <Button>Women Shirts</Button>
-                <Button>Women Jeans</Button>
-                <Button>Women Pants</Button>
-                <Button>Women Cropped Tops</Button>
-                <Button>Women Shorts</Button>
-                <Button>Women Low Top Sneakers</Button>
-                <Button>Women Dresses</Button>
-                <Button>Women Winter Wear</Button>
+            <Collection products={womenProducts}  buttons={womenCategories}>
+              
              
             </Collection>
 
