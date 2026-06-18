@@ -31,7 +31,7 @@ const selectedVariant = product.variants.find(v => v.size === selectedSize &&
         v.color === selectedColor
     );
 
-   const [sideBar, setSideBar] = useState(false);
+//    const [sideBar, setSideBar] = useState(false);
   const [cartSideBar ,setCartSideBar]=useState(false);
 const availableColors = selectedSize? product.variants.filter(v => v.size === selectedSize).map(v => v.color)
         : [];
@@ -88,7 +88,7 @@ const dispatch = useDispatch();
     return (
         <>
             {/* <Header /> */}
-             <Header toggleSideBar={() => setSideBar(true)} cartSideBar={()=>setCartSideBar(true)} />
+             <Header cartSideBar={()=>setCartSideBar(true)} />
                       <CartSideBar isOpen={cartSideBar} closeSideBar={() => setCartSideBar(false)}/>
             {/* <SideBar isOpen={sideBar} closeSideBar={() => setSideBar(false)}>
                       <CardSlider products={sideBarImages} ></CardSlider>
