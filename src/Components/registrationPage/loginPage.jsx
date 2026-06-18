@@ -1,49 +1,41 @@
 import "./loginPage.css"
 import Header from "../header/header"
 import Footer from "../footer/footer"
-export default function LoginPage(){
+export default function LoginPage({openCart}){
     return(
         <>
-        <Header/>
-        <div className="bg-[#e6e7e8] flex justify-center items-center w-full" >
-        <div className="bg-white w-[600px]">
-            <div className="font-bold text-[25px] w-full flex justify-center items-center">
-            <h2>Login with The Souled Store</h2>
+        <Header cartSideBar={openCart}/>
+      
+        <div className="bg-[#e6e7e8] w-full flex justify-center items-center pt-10 pb-10">
 
-            </div>
-            <div className="flex w-full justify-center items-center text-[20px]">
-                <div className="border bg-[#117a7a] text-white  pt-[20px] pl-[80px] pr-[80px] pb-[20px]">LOGIN</div>
-                <div className="border pt-[20px] pl-[80px] pr-[80px] pb-[20px] text-[#58595b]   ">REGISTER</div>
-            </div>
-            <div className="flex w-full justify-center items-center text-[20px] bg-[#f1f1f2]">
-                <div className="border border-[#9c9b9b] p-9 flex gap-5">
-                    <div className="flex border rounded-[10px] bg-white border-[#ccc]  gap-1 pl-4 pr-4 ">
-                        <div className="w-[30px]  flex items-center">
-                        <img src="./images/facebookicon.avif"></img>
+                <div className="bg-white w-[450px] flex flex-col justify-center items-center p-8">
 
-                        </div >
-                    <p className="border-l border-l-[#ccc] h-[40px] flex items-center pl-1">Facebook</p>
-                    </div>
-                    <div className="flex border rounded-[10px] bg-white border-[#ccc]  gap-1 pl-4 pr-4 ">
-                        <div className="w-[30px]  flex items-center">
-                            <img src="./images/googleicon.png"></img>
-                        
-
-                        </div >
-                    <p className="border-l border-l-[#ccc] h-[40px] flex items-center pl-1">Google</p>
+                    <div className="text-[#58595b] text-[15px] font-[700]">Login with The Souled Store</div>
+                    <div className="p-3 w-full mb-3 flex ">
+                        <div className="bg-[#117a7a] w-full  justify-center flex p-3 pl-9 pr-9 text-[15px] text-white border border-[#117a7a]">LOGIN</div>
+                        <div className="text-[#58595b] w-full justify-center flex p-3 pl-7 pr-7 text-[15px] border border-[#c5c5c5] ">REGISTER</div>
                     </div>
 
-                   
+                    <div className="bg-[#f1f1f2] p-8 w-[94%] border-[#9c9b9b] border">
+                        <div className="flex gap-6">
+                            <div className="bg-white border border-[#ccc] flex rounded-[10px]  pl-[8px] pr-[10px]">
+                                <div className="flex justify-center p-[8px] pl-0 items-center w-[35px]"><img alt="" className="w-[80%]" src="./images/facebookicon.avif" /></div>
+                                <span className="border-l p-[8px] flex justify-center items-center text-[#58595b] font-[700] text-[14.5px]">Facebook</span>
+                            </div>
+                             <div className="bg-white  border border-[#ccc] flex rounded-[10px] pl-[8px] pr-[10px]">
+                                <div className="flex justify-center p-[8px] pl-0 items-center w-[35px]"><img alt="" className="w-[80%]" src="./images/googleicon.png" /></div>
+                                <span className="border-l p-[8px] pr-[12px] pl-[11px] flex justify-center items-center text-[#58595b] font-[700] text-[14.5px]">Google</span>
+                            </div>
+                        </div>
+
+                        <div className="text-[#58595b] font-[700] text-[14px] flex justify-center pt-5 pb-5">- OR -</div>
+                        <input className="h-[30px] w-[286px] text-[14px] border border-[#ccc] pl-[15px] p-[18px] rounded-[10px]" placeholder="Enter Phone Number"/>
+                        <div className="h-[30px] w-[286px] flex justify-center items-center mt-[20px] font-[700] text-[14px] pl-[15px] p-[18px] rounded-[10px] bg-[#ee5456] text-white">PROCEED</div>
+                        <div className="flex justify-center pt-[25px] text-[#58595b] text-[14px] gap-1">New User ?<u className="text-[#ed2e30]">Create Account</u></div>
+
+                    </div>
                 </div>
-                <div className="bg-red-100">
-                    <p>-or-</p>
-                </div>
-                
             </div>
-
-
-        </div>
-        </div>
         <Footer/>
 
         </>

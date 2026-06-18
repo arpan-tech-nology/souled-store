@@ -32,7 +32,7 @@ export default function SwiperSection({slides=[] , className}){
         {
             slides.map((item)=>(
                 <SwiperSlide>
-                    <img className='w-full' src={item.image}></img>
+                    <img alt='' className='w-full' src={item.image}></img>
                 </SwiperSlide>
             ))
         }

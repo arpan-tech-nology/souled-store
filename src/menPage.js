@@ -9,7 +9,7 @@ import MenCategory from "./Components/categorySection/category";
 import Heading from "./Components/heading/heading";
 import SwiperSection from "./Components/swiper/swiper";
 import Curated from "./Components/curated/curated";
-import Button from "./Components/button/button";
+// import Button from "./Components/button/button";
 import Collection from "./Components/collectionMen/collectionMen";
 import SideBar from "./Components/sideBar/sidebar";
 import Header from "./Components/header/header";
@@ -21,64 +21,64 @@ import FeatureBar from "./Components/featureBar/featureBar";
 import { menProducts } from "./data/menProducts";
 import './App.css';
 import { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import WomenPage from "./womenPage";
 
 
-function MenPage() {
-  const menproducts = [
-    {
-      image: "new-arrival-img-1.avif",
-      title: "Black panther:Claws",
-      category: "Oversized Full sleeve T-Shirts",
-      price: "1499"
-    },
-    {
-      image: "new-arrival-img-2.avif",
-      title: "Looney Tunes:IT's Bugs",
-      category: "Oversized T-Shirts",
-      price: "1099",
-    },
-    {
-      image: "new-arrival-img-3.avif",
-      title: "Oversized T-shirt:Wan Blue",
-      category: "Oversized T-Shirts",
-      price: "1099"
-    },
-    {
-      image: "new-arrival-img-4.avif",
-      title: "Cotton Linen:Champagne",
-      category: "Cotton Linen Shirt",
-      price: "1799"
-    },
-    {
-      image: "new-arrival-img-3.avif",
-      title: "Oversized T-shirt:Wan Blue",
-      category: "Oversized T-Shirts",
-      price: "1099"
-    },
-    {
-      image: "new-arrival-img-1.avif",
-      title: "Black panther:Claws",
-      category: "Oversized Full sleeve T-Shirts",
-      price: "1499"
-    },
-    {
-      image: "new-arrival-img-4.avif",
-      title: "Cotton Linen:Champagne",
-      category: "Cotton Linen Shirt",
-      price: "1009"
-    },
-    {
-      image: "new-arrival-img-1.avif",
-      title: "Black panther:Claws",
-      category: "Oversized Full sleeve T-Shirts",
-      price: "1499"
-    },
+function MenPage({openCart}) {
+  // const menproducts = [
+  //   {
+  //     image: "new-arrival-img-1.avif",
+  //     title: "Black panther:Claws",
+  //     category: "Oversized Full sleeve T-Shirts",
+  //     price: "1499"
+  //   },
+  //   {
+  //     image: "new-arrival-img-2.avif",
+  //     title: "Looney Tunes:IT's Bugs",
+  //     category: "Oversized T-Shirts",
+  //     price: "1099",
+  //   },
+  //   {
+  //     image: "new-arrival-img-3.avif",
+  //     title: "Oversized T-shirt:Wan Blue",
+  //     category: "Oversized T-Shirts",
+  //     price: "1099"
+  //   },
+  //   {
+  //     image: "new-arrival-img-4.avif",
+  //     title: "Cotton Linen:Champagne",
+  //     category: "Cotton Linen Shirt",
+  //     price: "1799"
+  //   },
+  //   {
+  //     image: "new-arrival-img-3.avif",
+  //     title: "Oversized T-shirt:Wan Blue",
+  //     category: "Oversized T-Shirts",
+  //     price: "1099"
+  //   },
+  //   {
+  //     image: "new-arrival-img-1.avif",
+  //     title: "Black panther:Claws",
+  //     category: "Oversized Full sleeve T-Shirts",
+  //     price: "1499"
+  //   },
+  //   {
+  //     image: "new-arrival-img-4.avif",
+  //     title: "Cotton Linen:Champagne",
+  //     category: "Cotton Linen Shirt",
+  //     price: "1009"
+  //   },
+  //   {
+  //     image: "new-arrival-img-1.avif",
+  //     title: "Black panther:Claws",
+  //     category: "Oversized Full sleeve T-Shirts",
+  //     price: "1499"
+  //   },
 
 
 
-  ]
+  // ]
   const menCategory = [
     { image: "../images/men-category-img-1.avif" },
     { image: "../images/men-category-img-2.avif" },
@@ -126,60 +126,60 @@ function MenPage() {
 
   ]
 
-  const images = [
-    {
-      default: "./images/men-category-img-1.avif",
-      hover: "./images/men-category-img-2.avif",
-      title: "Black panther:Claws",
-      category: "Oversized Full sleeve T-Shirts",
-      price: "1499"
+  // const images = [
+  //   {
+  //     default: "./images/men-category-img-1.avif",
+  //     hover: "./images/men-category-img-2.avif",
+  //     title: "Black panther:Claws",
+  //     category: "Oversized Full sleeve T-Shirts",
+  //     price: "1499"
 
-    },
-    {
-      default: "./images/men-category-img-5.avif",
-      hover: "./images/men-category-img-6.avif", title: "Black panther:Claws",
-      category: "Oversized Full sleeve T-Shirts",
-      price: "1499"
-    },
-    {
-      default: "./images/men-category-img-6.avif",
-      hover: "./images/men-category-img-1.avif", title: "Black panther:Claws",
-      category: "Oversized Full sleeve T-Shirts",
-      price: "1499"
-    },
-    {
-      default: "./images/men-category-img-1.avif",
-      hover: "./images/men-category-img-2.avif", title: "Black panther:Claws",
-      category: "Oversized Full sleeve T-Shirts",
-      price: "1499"
-    },
-    {
-      default: "./images/men-category-img-5.avif",
-      hover: "./images/men-category-img-6.avif", title: "Black panther:Claws",
-      category: "Oversized Full sleeve T-Shirts",
-      price: "1499"
-    },
-    {
-      default: "./images/men-category-img-5.avif",
-      hover: "./images/men-category-img-6.avif",
-      title: "Black panther:Claws",
-      category: "Oversized Full sleeve T-Shirts",
-      price: "1499"
-    },
-    {
-      default: "./images/men-category-img-6.avif",
-      hover: "./images/men-category-img-1.avif", title: "Black panther:Claws",
-      category: "Oversized Full sleeve T-Shirts",
-      price: "1499"
-    },
-    {
-      default: "./images/men-category-img-1.avif",
-      hover: "./images/men-category-img-2.avif", title: "Black panther:Claws",
-      category: "Oversized Full sleeve T-Shirts",
-      price: "1499"
-    },
+  //   },
+  //   {
+  //     default: "./images/men-category-img-5.avif",
+  //     hover: "./images/men-category-img-6.avif", title: "Black panther:Claws",
+  //     category: "Oversized Full sleeve T-Shirts",
+  //     price: "1499"
+  //   },
+  //   {
+  //     default: "./images/men-category-img-6.avif",
+  //     hover: "./images/men-category-img-1.avif", title: "Black panther:Claws",
+  //     category: "Oversized Full sleeve T-Shirts",
+  //     price: "1499"
+  //   },
+  //   {
+  //     default: "./images/men-category-img-1.avif",
+  //     hover: "./images/men-category-img-2.avif", title: "Black panther:Claws",
+  //     category: "Oversized Full sleeve T-Shirts",
+  //     price: "1499"
+  //   },
+  //   {
+  //     default: "./images/men-category-img-5.avif",
+  //     hover: "./images/men-category-img-6.avif", title: "Black panther:Claws",
+  //     category: "Oversized Full sleeve T-Shirts",
+  //     price: "1499"
+  //   },
+  //   {
+  //     default: "./images/men-category-img-5.avif",
+  //     hover: "./images/men-category-img-6.avif",
+  //     title: "Black panther:Claws",
+  //     category: "Oversized Full sleeve T-Shirts",
+  //     price: "1499"
+  //   },
+  //   {
+  //     default: "./images/men-category-img-6.avif",
+  //     hover: "./images/men-category-img-1.avif", title: "Black panther:Claws",
+  //     category: "Oversized Full sleeve T-Shirts",
+  //     price: "1499"
+  //   },
+  //   {
+  //     default: "./images/men-category-img-1.avif",
+  //     hover: "./images/men-category-img-2.avif", title: "Black panther:Claws",
+  //     category: "Oversized Full sleeve T-Shirts",
+  //     price: "1499"
+  //   },
 
-  ]
+  // ]
   const sideBarImages = [
     {
       image: "sidebar-img-1.avif",
@@ -250,8 +250,7 @@ function MenPage() {
 
       <div id="men-page">
         
-        <Header toggleSideBar={() => setSideBar(true)} cartSideBar={()=>setCartSideBar(true)} />
-          <CartSideBar isOpen={cartSideBar} closeSideBar={() => setCartSideBar(false)}/>
+        <Header toggleSideBar={() => setSideBar(true)} cartSideBar={openCart} />
 
 
         <SideBar isOpen={sideBar} closeSideBar={() => setSideBar(false)}>

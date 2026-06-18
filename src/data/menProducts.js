@@ -4,7 +4,7 @@ export const menProducts = [
     "title": "Peanuts:Works Out",
     "price_range": { "min": "700", "max": "900" },
     "stock": "100",
-    "tags": ["men"],
+    "tags": ["men","t-shirt"],
     "image_url":"new-arrival-img-1.avif",
     "number_of_variants": "3",
     "variant_options": ["size", "color"],
@@ -47,7 +47,7 @@ export const menProducts = [
     "title": "Casual T-Shirt",
     "price_range": { "min": null, "max": "500" },
     "stock": "120", // 50 + 70
-     "tags": ["men"],
+     "tags": ["men","t-shirt"],
     "image_url":"new-arrival-img-2.avif",
     "number_of_variants": "2",
     "variant_options": ["size"],
@@ -75,7 +75,7 @@ export const menProducts = [
     "title": "Sports Hoodie",
     "price_range": { "min": "1200", "max": "1500" },
     "stock": "50", // 20 + 30
-     "tags": ["men"],
+     "tags": ["men","hoodie"],
     "image_url":"new-arrival-img-3.avif",
     "number_of_variants": "2",
     "variant_options": ["size", "color"],
@@ -112,7 +112,7 @@ export const menProducts = [
     "title": "Denim Jeans",
     "price_range": { "min": "1000", "max": "1300" },
     "stock": "40", // 15 + 25
-     "tags": ["men"],
+     "tags": ["men","denim"],
     "image_url":"new-arrival-img-4.avif",
     "number_of_variants": "2",
     "variant_options": ["size"],
@@ -140,7 +140,7 @@ export const menProducts = [
     "title": "Summer Shirt",
     "price_range": { "min": null, "max": "750" },
     "stock": "50", // 20 + 30
-     "tags": ["men"],
+     "tags": ["men","shirt"],
     "image_url":"new-arrival-img-1.avif",
     "number_of_variants": "2",
     "variant_options": ["size", "color"],

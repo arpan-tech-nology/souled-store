@@ -4,7 +4,7 @@ export default function Curated({image=[]}){
         <div className="grid grid-cols-4 gap-4">
             {
                 image.map((items)=>(
-                    <img src={items.image}></img>
+                    <img alt="" src={items.image}></img>
 
                 ))
 

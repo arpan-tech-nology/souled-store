@@ -14,7 +14,7 @@ export default function SideBar({children , isOpen , closeSideBar}){
             <div className="w-[500px] z-20 overflow-y-auto h-full bg-white">
             <div className="flex p-[20px] gap-6">
                   <div className="logo-img w-[90px] flex  items-center">
-                <img className=" w-full" src="../images/logo.webp"></img>
+                <img alt="" className=" w-full" src="../images/logo.webp"></img>
             </div>
                 <div className=" w-[200px] border border-[#158b8d] rounded-[6px] pt-[13px] pb-[13px] pl-[13px] pr-[13px] flex items-center justify-center ">Login In/Register </div>
             </div>
@@ -22,8 +22,8 @@ export default function SideBar({children , isOpen , closeSideBar}){
                 <span>
                     Earn 10% Cashback on Every App Order
                     </span>
-                    <div className="w-[24px] border border-[#18a7a8] rounded-[5px] shadow-[0px_1px_2px_0px_#0b0b0b] "><img src="./images/google-play-store.avif"></img></div>
-                    <div className="w-[24px] border border-[#18a7a8] rounded-[5px] shadow-[0px_1px_2px_0px_#0b0b0b] "><img src="./images/appstore.avif"></img></div>
+                    <div className="w-[24px] border border-[#18a7a8] rounded-[5px] shadow-[0px_1px_2px_0px_#0b0b0b] "><img alt="" src="./images/google-play-store.avif"></img></div>
+                    <div className="w-[24px] border border-[#18a7a8] rounded-[5px] shadow-[0px_1px_2px_0px_#0b0b0b] "><img alt="" src="./images/appstore.avif"></img></div>
                 
             </div>
             <div className="w-full h-[60px]  items-center shadow-[0px_4px_4px_0px_#dce9ea] ">

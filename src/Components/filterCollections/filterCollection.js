@@ -7,37 +7,39 @@ import { useLocation } from "react-router-dom";
 import { allProducts } from "../../data/allProducts";
 import { useState } from "react";
 
-export default function FilterCollections() {
-    const categories = [
-        { name: "Cotton Linen Shirts", count: 1 },
-        { name: "Drop Cut T-Shirts", count: 16 },
-        { name: "Easy Fit Vests", count: 6 },
-        { name: "Exclusive", count: 1 },
-        { name: "Hooded T-Shirts", count: 22 },
-        { name: "Men Full Sleeve T-Shirts", count: 3 },
-        { name: "Men Hooded T-Shirts", count: 1 },
-    ];
+export default function FilterCollections({openCart}) {
+   const { state } = useLocation();
+    const tag = state?.tag;
     const [selectedSizes, setSelectedSizes] = useState([]);
     const [priceRange, setPriceRange] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState(tag || "");
 
-    const { state } = useLocation();
-    const tag = state?.tag;
+    const categories = [
+        ...new Set(
+            allProducts
+                .filter(product => product.tags?.includes(tag))
+                .flatMap(product => product.tags || [])
+                .filter(item => item !== tag)
+        )
+    ];
 
 
-    const baseProducts = tag
-        ? allProducts.filter(p => p.tags?.includes(tag))
+    const baseProducts = selectedCategory
+        ? allProducts.filter(product =>
+            product.tags?.includes(selectedCategory)
+        )
         : allProducts;
 
     const products = baseProducts.filter(product => {
 
         return product.variants?.some(variant => {
 
-            
+
             const sizeMatch =
                 selectedSizes.length === 0 ||
                 selectedSizes.includes(variant.size);
 
-            
+
             const price = Number(variant.price);
 
             const priceMatch =
@@ -49,11 +51,12 @@ export default function FilterCollections() {
     });
 
 
+
     return (
         <>
-            <Header />
+            <Header cartSideBar={openCart}/>
             <div className="flex p-2">
-                <div className="w-[350px] sticky z-10 top-[160px] bg-white h-[100vh] overflow-y-auto">
+                <div className="w-[350px] sticky z-10 top-[160px] bg-white h-[60vh] overflow-y-auto">
                     <div>
                         <h2 className="text-[14.5px] text-[#59595b] font-[700] pt-[12px] pb-[12px] pr-[3px] pl-[3px] border-t-[1px]">CATEGORIES</h2>
                         <input className="outline-none border border-rgba(0,0,0,0.15) p-[6px] w-[95%] text-[#59595b] font-[300] text-[15px] rounded-[5px]" placeholder="Search for Categories" />
@@ -61,29 +64,19 @@ export default function FilterCollections() {
                             {categories.map((item, index) => (
                                 <label key={index} className="flex items-center justify-between p-1 cursor-pointer" >
                                     <div className="flex items-center gap-3">
-                                        <input type="checkbox" className="w-[16px] h-[16px] text-[#ccc]" />
-                                        <span className="text-gray-700 text-sm">{item.name}</span>
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedCategory === item}
+                                            onChange={() => setSelectedCategory(item)}
+                                            className="w-[16px] h-[16px]"
+                                        />
+                                        <span className="text-gray-700 text-sm">{item}</span>
                                     </div>
-                                    <span className="text-gray-500 text-sm">{item.count} </span>
                                 </label>
                             ))}
                         </div>
                     </div>
-                    <div>
-                        <h2 className="text-[14.5px] text-[#59595b] font-[700] pt-[12px] pb-[12px] pr-[3px] pl-[3px] border-t-[1px]">THEMES</h2>
-                        <input className="outline-none border border-rgba(0,0,0,0.15) p-[6px] w-[95%] text-[#59595b] font-[300] text-[15px] rounded-[5px]" placeholder="Search for Themes" />
-                        <div className="w-full p-2">
-                            {categories.map((item, index) => (
-                                <label key={index} className="flex items-center justify-between p-1 cursor-pointer" >
-                                    <div className="flex items-center gap-3">
-                                        <input type="checkbox" className="w-[16px] h-[16px] text-[#ccc]" />
-                                        <span className="text-gray-700 text-sm">{item.name}</span>
-                                    </div>
-                                    <span className="text-gray-500 text-sm">{item.count} </span>
-                                </label>
-                            ))}
-                        </div>
-                    </div>
+                  
                     <div>
                         <h2 className="text-[14.5px] text-[#59595b] font-[700] pt-[12px] pb-[12px] pr-[3px] pl-[3px] border-t-[1px]">SIZE</h2>
                         <input className="outline-none border border-rgba(0,0,0,0.15) p-[6px] w-[95%] text-[#59595b] font-[300] text-[15px] rounded-[5px]" placeholder="Search for Size" />
@@ -99,7 +92,7 @@ export default function FilterCollections() {
                                                 : [...prev, size]
                                         );
                                     }}
-                                    className={`border-2 rounded-[6px] pt-[2px] pb-[2px] pl-2 pr-2 w-max text-[15px] cursor-pointer
+                                    className={`border-2 rounded-[6px] pt-[6px] pb-[6px] pl-4 pr-4 w-max text-[15px] cursor-pointer
                 ${selectedSizes.includes(size)
                                             ? "bg-black text-white"
                                             : "border-[#58595b]"
@@ -164,7 +157,7 @@ export default function FilterCollections() {
                             </select>
                         </div>
                     </div>
-                    <div className="category-images grid grid-cols-4 gap-4">
+                    <div className="category-images grid grid-cols-4 gap-4 all-filter-images">
                         {products.map((item, index) => (
                             <Card key={index} product={item} />
                         ))}

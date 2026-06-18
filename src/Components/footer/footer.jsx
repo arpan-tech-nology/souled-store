@@ -97,10 +97,10 @@ export default function Footer() {
               <div className="flex justify-center items-center gap-4">
                 <div className=" img-width w-[130px]">
 
-                  <img src="../images/play-store.avif"></img>
+                  <img alt="" src="../images/play-store.avif"></img>
                 </div>
                 <div className= "img-width w-[130px]">
-                  <img src="../images/app-store.avif"></img>
+                  <img alt="" src="../images/app-store.avif"></img>
                 </div>
               </div>
             </div>
@@ -131,16 +131,16 @@ export default function Footer() {
                 <p className="text-[14px] w-[230px]  text-[#4d4b4b] ">100% Secure Payments:</p>
                 <div className=" ">
 
-                  <img src="../images/payments-icon.avif"></img>
+                  <img alt="" src="../images/payments-icon.avif"></img>
                 </div>
               </div>
               <div className="width w-[45%] flex items-center justify-center ">
                 <p className="shiping-container text-[14px] w-[130px] text-[#4d4b4b] border-l border-[#c1bfbf] pl-2  ">Shipping Partners:</p>
                 <div className="flex flex-wrap gap-2 ">
-                  <div className="w-[60px] "><img src="../images/dtdc (1).avif"></img></div>
-                  <div className="w-[60px] "><img src="../images/delivery.webp"></img></div>
-                  <div className="w-[60px] "><img src="../images/ECOM-Express.png"></img></div>
-                  <div className="w-[60px] "><img src="../images/XPRESSBEES.avif"></img></div>
+                  <div className="w-[60px] "><img alt="" src="../images/dtdc (1).avif"></img></div>
+                  <div className="w-[60px] "><img alt="" src="../images/delivery.webp"></img></div>
+                  <div className="w-[60px] "><img alt="" src="../images/ECOM-Express.png"></img></div>
+                  <div className="w-[60px] "><img alt="" src="../images/XPRESSBEES.avif"></img></div>
                 </div>
 
               </div>

@@ -2,12 +2,12 @@ import Header from "../header/header"
 import Footer from "../footer/footer"
 import "./productPage.css"
 import { useParams } from "react-router-dom"
-import { products } from "../../menPage";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/CartSlice/cartSlice";
-import SideBar from "../sideBar/sidebar";
+// import SideBar from "../sideBar/sidebar";
 import CartSideBar from "../cartSideBar/cartSideBar";
 import { allProducts } from "../../data/allProducts";
 import { useLocation } from "react-router-dom";
@@ -31,7 +31,7 @@ const selectedVariant = product.variants.find(v => v.size === selectedSize &&
         v.color === selectedColor
     );
 
-   const [sideBar, setSideBar] = useState(false);
+//    const [sideBar, setSideBar] = useState(false);
   const [cartSideBar ,setCartSideBar]=useState(false);
 const availableColors = selectedSize? product.variants.filter(v => v.size === selectedSize).map(v => v.color)
         : [];
@@ -50,8 +50,8 @@ let displayPrice = "";
     }
 
 const dispatch = useDispatch();
-       const navigate = useNavigate();
-    const [added, setAdded] = useState(false);
+    //    const navigate = useNavigate();
+    // const [added, setAdded] = useState(false);
 
    const handleAddToCart = () => {
         if (!selectedSize) {
@@ -80,7 +80,7 @@ const dispatch = useDispatch();
             setCartStatus("added");
             setTimeout(() => {
                 setCartStatus("idle");
-            }, 500);
+            }, 2000);
 
         }, 2000);
     };
@@ -90,33 +90,28 @@ const dispatch = useDispatch();
             {/* <Header /> */}
              <Header toggleSideBar={() => setSideBar(true)} cartSideBar={()=>setCartSideBar(true)} />
                       <CartSideBar isOpen={cartSideBar} closeSideBar={() => setCartSideBar(false)}/>
-            
-            
-                    {/* <SideBar isOpen={sideBar} closeSideBar={() => setSideBar(false)}>
+            {/* <SideBar isOpen={sideBar} closeSideBar={() => setSideBar(false)}>
                       <CardSlider products={sideBarImages} ></CardSlider>
-            
                       <MenCategory cards={menCategory}></MenCategory>
                       <CardSlider products={sideBarImages} ></CardSlider>
-            
-            
-                    </SideBar> */}
-            <div className="w-full flex justify-center items-center">
-                <div className="w-[80%]">
-                    <div className="flex text-[14px] pt-8 pb-8">
+            </SideBar> */}
+            <div className="w-full flex  justify-center items-center">
+                <div className="w-[80%] cart-container">
+                    <div className="flex text-[14px] pt-8 pb-8 flex-wrap">
                         <span className="text-[#a7a9ac] pl-1">Home </span>
                         <span className="text-[#a7a9ac] pl-1">/ Oversized Shirts </span>
                         <span className="text-[#a7a9ac] pl-1">/ The Souled Store </span>
                         <span className="pl-1"> / TSS Originals:Chitrakatha</span>
 
                     </div>
-                    <div className="flex justify-between">
-                        <div className="grid grid-cols-2 gap-4 w-[60%]">
-                            <img src={selectedVariant? `../images/${selectedVariant.image_url}` : `../images/${product?.image_url}`}></img>
-                            <img src={selectedVariant? `../images/${selectedVariant.image_url}` : `../images/${product?.image_url}`}></img>
-                            <img src={selectedVariant? `../images/${selectedVariant.image_url}` : `../images/${product?.image_url}`}></img>
-                            <img src={selectedVariant? `../images/${selectedVariant.image_url}` : `../images/${product?.image_url}`}></img>
+                    <div className="flex justify-between cart-item">
+                        <div className="grid grid-cols-2 gap-4 w-[60%] cart-item-img">
+                            <img alt="" src={selectedVariant? `../images/${selectedVariant.image_url}` : `../images/${product?.image_url}`}></img>
+                            <img alt="" src={selectedVariant? `../images/${selectedVariant.image_url}` : `../images/${product?.image_url}`}></img>
+                            <img alt="" src={selectedVariant? `../images/${selectedVariant.image_url}` : `../images/${product?.image_url}`}></img>
+                            <img alt="" src={selectedVariant? `../images/${selectedVariant.image_url}` : `../images/${product?.image_url}`}></img>
                         </div>
-                        <div className="w-[35%] ">
+                        <div className="w-[35%] cart-item-content ">
                             <div>
                                 <h2 className="font-bold text-[25px] mb-0 pb-0 text-[#58595b]">{product.title}</h2>
                                 <p className="text-[#a7a9ac] text-[15px] pb-4 ">Cotton Linen Shirts</p>
@@ -177,7 +172,7 @@ const dispatch = useDispatch();
                               {error && (
                             <div className="text-[#a94442] bg-[#f2dede] rounded-[6px] p-3 mb-4 text-[14px]">{error}</div>
                         )}
-                             <div className="flex gap-2">
+                             <div className="flex gap-2 cart-btn">
                             {cartStatus === "idle" && (
                                 <div onClick={handleAddToCart}
                                     className="bg-[#ec3d25] w-[229px] text-white pt-[8px] pb-[8px] flex justify-center items-center rounded-[3px] font-[700] text-[14px] cursor-pointer">
@@ -196,7 +191,7 @@ const dispatch = useDispatch();
                                     ADDED 
                                 </div>
                             )}
-                            <div className="text-[#148c8d] flex items-center w-[170px] justify-center border border-[#148c8d] h-[39px] "><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#148c8d"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>ADD TO WISHLIST</div>
+                            <div className="wishlist-btn text-[#148c8d] flex items-center w-[170px] justify-center border border-[#148c8d] h-[39px] "><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#148c8d"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>ADD TO WISHLIST</div>
                         </div>
                               <div className="flex gap-1 items-center pt-4">
                                  <p className="text-[#58595b] text-[15px] pr-2">Share
@@ -223,16 +218,12 @@ const dispatch = useDispatch();
                                 <div className="flex justify-between text-[16px] border-b font-[700] p-3">Product description <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></div>
                                 <div className="flex justify-between text-[16px] font-[700] p-3">Artist's Details <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></div>
                               </div>
-
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
             <Footer />
-
         </>
     )
 }

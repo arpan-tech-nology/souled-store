@@ -11,7 +11,7 @@ export default function MenCategory({ cards,tag}){
         {cards.map((item)=>(
             
             <img onClick={() =>
-                            navigate("/filter", { state: { tag } })} src={item.image}></img>
+                            navigate("/filter", { state: { tag } })} alt="" src={item.image}></img>
         ))}
      
         </div>

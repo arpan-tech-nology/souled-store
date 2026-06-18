@@ -4,5 +4,43 @@
 }
 @media screen and (max-width:1350px) {
     
+        .wishlist-btn{
+            width: 250px;
+
+        }
+
+    
+    
+    
+}
+@media screen and (max-width:1222px) {
+    
+        .cart-item{
+            flex-direction: column;
+        }
+        .cart-item .cart-item-img{
+            width: 100%;
+        }
+        .cart-item .cart-item-content{
+            width: 100%;
+            padding-top: 20px;
+        }
+
+    
+    
+    
+}
+@media screen and (max-width:655px) {
+    .cart-container{
+        width:90%
+    }
+     
+    .cart-container .cart-btn{
+        flex-direction: column;
+    }
+    .wishlist-btn {
+        width: 230px;
+
+    }
     
 }

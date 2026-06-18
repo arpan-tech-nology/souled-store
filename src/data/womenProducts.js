@@ -4,8 +4,8 @@ export const womenProducts = [
     "title": "Peanuts:Works Out",
     "price_range": { "min": "700", "max": "900" },
     "stock": "100",
-    "tag": ["women"],
-    "image_url": "new-arrival-img-1.avif",
+    "tags": ["women","women-top"],
+    "image_url": "women-new-arrival-img-1.avif",
     "number_of_variants": "3",
     "variant_options": ["size", "color"],
     "variant_values": [
@@ -35,9 +35,9 @@ export const womenProducts = [
       }
     ],
     "variants": [
-      { "id": "1b", "size": "small", "color": "blue", "price": "850", "image_url": "new-arrival-img-1.avif", "stock": "40" },
-      { "id": "1a", "size": "medium", "color":"red", "price": "800", "image_url": "new-arrival-img-2.avif", "stock": "20" },
-      { "id": "1c", "size": "large", "color": "blue", "price": "750", "image_url": "new-arrival-img-3.avif", "stock": "40" },
+      { "id": "1b", "size": "small", "color": "blue", "price": "850", "image_url": "women-new-arrival-img-1.avif", "stock": "40" },
+      { "id": "1a", "size": "medium", "color":"red", "price": "800", "image_url": "women-new-arrival-img-2.avif", "stock": "20" },
+      { "id": "1c", "size": "large", "color": "blue", "price": "750", "image_url": "women-new-arrival-img-3.avif", "stock": "40" },
 
     ]
   },
@@ -47,7 +47,8 @@ export const womenProducts = [
     "title": "Casual T-Shirt",
     "price_range": { "min": null, "max": "500" },
     "stock": "120", // 50 + 70
-    "image_url": "new-arrival-img-2.avif",
+     "tags": ["women","women-top"],
+    "image_url": "women-new-arrival-img-2.avif",
     "number_of_variants": "2",
     "variant_options": ["size"],
     "variant_values": [
@@ -74,7 +75,8 @@ export const womenProducts = [
     "title": "Sports Hoodie",
     "price_range": { "min": "1200", "max": "1500" },
     "stock": "50", // 20 + 30
-    "image_url": "new-arrival-img-3.avif",
+     "tags": ["women","women-jean"],
+    "image_url": "women-new-arrival-img-3.avif",
     "number_of_variants": "2",
     "variant_options": ["size", "color"],
     "variant_values": [
@@ -110,7 +112,8 @@ export const womenProducts = [
     "title": "Denim Jeans",
     "price_range": { "min": "1000", "max": "1300" },
     "stock": "40", // 15 + 25
-    "image_url": "new-arrival-img-4.avif",
+     "tags": ["women","women-jacket"],
+    "image_url": "women-new-arrival-img-4.avif",
     "number_of_variants": "2",
     "variant_options": ["size"],
     "variant_values": [
@@ -137,7 +140,8 @@ export const womenProducts = [
     "title": "Summer Shirt",
     "price_range": { "min": null, "max": "750" },
     "stock": "50", // 20 + 30
-    "image_url": "new-arrival-img-1.avif",
+     "tags": ["women","women-frock"],
+    "image_url": "women-new-arrival-img-1.avif",
     "number_of_variants": "2",
     "variant_options": ["size", "color"],
     "variant_values": [

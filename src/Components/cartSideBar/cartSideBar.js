@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
-import { removeFromCart, updateQuantity, updateSize } from "../../Redux/CartSlice/cartSlice";
+import { removeFromCart, updateQuantity } from "../../Redux/CartSlice/cartSlice";
 export default function CartSideBar({children , isOpen , closeSideBar}){
 
        const cartItems = useSelector(state => state.cart.items);
@@ -17,7 +17,7 @@ export default function CartSideBar({children , isOpen , closeSideBar}){
     const totalProducts = cartItems.length;
     const [removingId, setRemovingId] = useState(null);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     if(isOpen){
         document.body.style.overflow='hidden';
     }
@@ -26,10 +26,24 @@ export default function CartSideBar({children , isOpen , closeSideBar}){
     }
     return(
         <>
-         <div className={`${isOpen?"sidebar w-full h-full flex z-10 fixed  top-0 overflow-hidden ":"hidden"}`}>
+         <div className={`${isOpen?"sidebar w-full h-full flex z-30 fixed  top-0 overflow-hidden ":"hidden"}`}>
             <div onClick={closeSideBar} className=" absolute w-full h-full  bg-[rgba(0,0,0,0.4)]"></div>
-            <div className="w-[500px] z-20 overflow-y-auto h-full bg-white absolute right-0">
-                    {cartItems.length > 0 && (
+            <div className="w-[500px]  overflow-y-auto h-full bg-white absolute right-0 ">
+                 {cartItems.length === 0 ? (
+                    <>
+                    <div className=" h-full flex justify-center items-center flex-col">
+                        <div className="">
+                            <img src="/images/emptyCart.avif"></img>
+                        </div>
+
+                    <p className="text-[20px]  flex justify-center items-center pt-4">Your shopping cart is empty!</p>
+                    </div>
+                    </>                    
+                )
+                    :
+                     (
+                        <div>
+                              {cartItems.length > 0 && (
                                                 <div className="border border-[#eee] w-[100%] flex flex-col items-center h-max" >
                                                     <div className="flex justify-between border-b-[1.5px] border-b-[#eee] items-center p-4 w-full">
                                                         <div className="flex text-[13px] font-[700] gap-3">
@@ -45,7 +59,7 @@ export default function CartSideBar({children , isOpen , closeSideBar}){
                                                             <div className="flex p-3 justify-between pb-0 w-full">
                                                                 <div className="flex justify-between gap-2">
                                                                     <div className="bg-[#168D8F] w-[19px] h-[19px] rounded-[2px] flex justify-center items-center"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" /></svg></div>
-                                                                    <div className="w-[100px] rounded-[6px]"><img className="rounded-[6px]" src={`../images/${item.image}`} /></div>
+                                                                    <div className="w-[100px] rounded-[6px]"><img className="rounded-[6px]" alt="image" src={`../images/${item.image}`} /></div>
                                                                     <div className="text-[14px] flex flex-col gap-2">
                                                                         <div className="font-[600]">{item.title}</div>
                                                                         <div className="text-[#a7a9ac] ">{item.title}</div>
@@ -100,12 +114,15 @@ export default function CartSideBar({children , isOpen , closeSideBar}){
                                             <div className="  bg-[#168D8F] text-white w-[90%] text-[20px] rounded-[10px] h-[45px] flex justify-center items-center">Check Out</div>
                                             </div>
                                             </Link>
+                                            </div>
+                     )}
 
 
 
 
          
             
+          
             </div>
 
         </div>
