@@ -31,7 +31,7 @@ const selectedVariant = product.variants.find(v => v.size === selectedSize &&
         v.color === selectedColor
     );
 
-//    const [sideBar, setSideBar] = useState(false);
+   const [sideBar, setSideBar] = useState(false);
   const [cartSideBar ,setCartSideBar]=useState(false);
 const availableColors = selectedSize? product.variants.filter(v => v.size === selectedSize).map(v => v.color)
         : [];
