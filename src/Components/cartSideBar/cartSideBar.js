@@ -2,7 +2,7 @@
 // import "./CartSideBar.css"
 import "./cartSideBar.css"
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
@@ -33,7 +33,7 @@ export default function CartSideBar({children , isOpen , closeSideBar}){
                     <>
                     <div className=" h-full flex justify-center items-center flex-col">
                         <div className="">
-                            <img src="/images/emptyCart.avif"></img>
+                            <img alt="" src="/images/emptyCart.avif"></img>
                         </div>
 
                     <p className="text-[20px]  flex justify-center items-center pt-4">Your shopping cart is empty!</p>
@@ -59,7 +59,7 @@ export default function CartSideBar({children , isOpen , closeSideBar}){
                                                             <div className="flex p-3 justify-between pb-0 w-full">
                                                                 <div className="flex justify-between gap-2">
                                                                     <div className="bg-[#168D8F] w-[19px] h-[19px] rounded-[2px] flex justify-center items-center"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" /></svg></div>
-                                                                    <div className="w-[100px] rounded-[6px]"><img className="rounded-[6px]" alt="image" src={`../images/${item.image}`} /></div>
+                                                                    <div className="w-[100px] rounded-[6px]"><img className="rounded-[6px]" alt="" src={`../images/${item.image}`} /></div>
                                                                     <div className="text-[14px] flex flex-col gap-2">
                                                                         <div className="font-[600]">{item.title}</div>
                                                                         <div className="text-[#a7a9ac] ">{item.title}</div>

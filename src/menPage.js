@@ -14,7 +14,7 @@ import Collection from "./Components/collectionMen/collectionMen";
 import SideBar from "./Components/sideBar/sidebar";
 import Header from "./Components/header/header";
 import Footer from "./Components/footer/footer";
-import CartSideBar from "./Components/cartSideBar/cartSideBar";
+// import CartSideBar from "./Components/cartSideBar/cartSideBar";
 
 
 import FeatureBar from "./Components/featureBar/featureBar";
@@ -240,7 +240,7 @@ function MenPage({openCart}) {
     "Men Low Top Sneakers",
   ]
   const [sideBar, setSideBar] = useState(false);
-  const [cartSideBar ,setCartSideBar]=useState(false);
+  // const [cartSideBar ,setCartSideBar]=useState(false);
 
 
 

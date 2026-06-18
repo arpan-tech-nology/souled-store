@@ -4,7 +4,7 @@ import "./productPage.css"
 import { useParams } from "react-router-dom"
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/CartSlice/cartSlice";
 // import SideBar from "../sideBar/sidebar";
@@ -31,7 +31,7 @@ const selectedVariant = product.variants.find(v => v.size === selectedSize &&
         v.color === selectedColor
     );
 
-   const [sideBar, setSideBar] = useState(false);
+//    const [sideBar, setSideBar] = useState(false);
   const [cartSideBar ,setCartSideBar]=useState(false);
 const availableColors = selectedSize? product.variants.filter(v => v.size === selectedSize).map(v => v.color)
         : [];
