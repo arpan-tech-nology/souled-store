@@ -25,7 +25,7 @@ import { useState } from "react";
 // import WomenPage from "./womenPage";
 
 
-function MenPage({openCart}) {
+function MenPage({openCart,sidebarOpen ,setSidebarOpen}) {
   // const menproducts = [
   //   {
   //     image: "new-arrival-img-1.avif",
@@ -182,42 +182,42 @@ function MenPage({openCart}) {
   // ]
   const sideBarImages = [
     {
-      image: "sidebar-img-1.avif",
+      image_url: "sidebar-img-1.avif",
       title: "Summer Home",
 
     },
     {
-      image: "sidebar-img-4.avif",
+      image_url: "sidebar-img-4.avif",
       title: "Hot Merch",
 
     },
     {
-      image: "sidebar-img-3.avif",
+      image_url: "sidebar-img-3.avif",
       title: "collab Kicks",
 
     },
     {
-      image: "sidebar-img-4.avif",
+      image_url: "sidebar-img-4.avif",
       title: "Culter Code",
 
     },
     {
-      image: "sidebar-img-1.avif",
+      image_url: "sidebar-img-1.avif",
       title: "Summer Home",
 
     },
     {
-      image: "sidebar-img-4.avif",
+      image_url: "sidebar-img-4.avif",
       title: "Hot Merch",
 
     },
     {
-      image: "sidebar-img-3.avif",
+      image_url: "sidebar-img-3.avif",
       title: "collab Kicks",
 
     },
     {
-      image: "sidebar-img-4.avif",
+      image_url: "sidebar-img-4.avif",
       title: "Culter Code",
 
     },

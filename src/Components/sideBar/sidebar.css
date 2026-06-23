@@ -36,8 +36,27 @@ margin-top: 4px;
 
 }
 
-.sidebar  .slider .collections .swiper-wrapper{
-    /* padding-bottom: 20px; */
+@media screen and (max-width:400px) {
+
+    .cashback-text{
+        font-size: 14px;
+    }
+    .image-hide{
+        display: none;
+    }
+    .login-text{
+        font-size: 14px;
+        padding: 9px;
+       
+    }
+
+}
+@media screen and (max-width:334px) {
+     .login-text{
+        font-size: 12px;
+        padding: 7px;
+       
+    }
     
 }
 

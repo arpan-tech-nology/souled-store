@@ -14,7 +14,7 @@ export default function CardSlider({products}) {
         <>
            
             <div className=" collections w-full flex justify-center items-center relative">
-                <div className="w-[90%]" >
+                <div className="w-[90%] swiper-width" >
                     <Swiper
 
                         navigation={{
@@ -60,7 +60,7 @@ export default function CardSlider({products}) {
 
                     </Swiper>
                     <div className='prev-btn1 '><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="white"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" /></svg></div>
-                    <div className='next-btn1 right-20' ><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="white"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" /></svg></div>
+                    <div className='next-btn1 right-[70px]' ><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="white"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" /></svg></div>
                 </div>
             </div>
 

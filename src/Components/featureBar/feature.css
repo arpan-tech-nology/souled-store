@@ -6,13 +6,7 @@ font-size: 14px;
         width: 50px!important;
         height:50px!important;
     }
-    .feature-bar .container{
-        gap: 1px;
-        /* width: 180px; */
-    }
-    .feature-bar .container .width{
-        /* width:  100px; */
-    }
+   
     
 }
 @media screen and (max-width:650px) {

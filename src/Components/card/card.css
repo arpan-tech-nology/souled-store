@@ -4,18 +4,28 @@
  @media screen and (max-width:744px) {
     .card {
         font-size: 14px;
+        padding-bottom: 20px;
     }
     .like{
         color: black;
         top: auto;
         background-color: transparent;
-         bottom:30px;
+         bottom:60px;
          backdrop-filter: none;
+         width: 20px;
+         height: 20px;
 
     }
     .card .heading{
         border-bottom: 0px;
     }
+}
+@media screen and (max-width:515px) {
+.like{
+
+    bottom:50px;
+}
+
 }
 @media screen and (max-width:500px) {
      .card {
@@ -23,3 +33,12 @@
     }
     
 }
+@media screen and (max-width:319px) {
+        .collection {
+        
+        grid-template-columns: 1fr ;
+    }
+    
+}
+
+

@@ -8,3 +8,34 @@
 .collections .like{
     display: none;
 }
+@media screen and (max-width:1277px) {
+    .next-btn1{
+        right: 54px;
+    }
+    .prev-btn1 {
+        left:60px;
+    }
+
+}
+@media screen and (max-width:1035px) {
+    .swiper-width{
+        width: 95%;
+    }
+    .next-btn1{
+        right: 19px;
+    }
+    .prev-btn1 {
+        left:25px;
+    }
+    
+
+}
+@media screen and (max-width:767px) {
+
+    .next-btn1{
+        display: none;
+    }
+    .prev-btn1 {
+        display: none;
+    }
+}

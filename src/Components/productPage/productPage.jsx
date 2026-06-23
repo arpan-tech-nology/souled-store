@@ -2,6 +2,7 @@ import Header from "../header/header"
 import Footer from "../footer/footer"
 import "./productPage.css"
 import { useParams } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
@@ -11,7 +12,7 @@ import { addToCart } from "../../Redux/CartSlice/cartSlice";
 import CartSideBar from "../cartSideBar/cartSideBar";
 import { allProducts } from "../../data/allProducts";
 import { useLocation } from "react-router-dom";
-
+import { addToWishlist , removeFromWishlist } from "../../Redux/WishlistSlice/WishlistSlice";
 // import CartSideBar from "../cartSideBar/cartSideBar";
 
 export default function ProductPage() {
@@ -83,6 +84,34 @@ const dispatch = useDispatch();
             }, 2000);
 
         }, 2000);
+    };
+    const wishlistItems = useSelector(state => state.wishlist.items);
+    const isWishlisted = wishlistItems.some(
+        item => item.product_id === product.product_id
+    );
+    const handleWishlist = () => {
+
+        const exists = wishlistItems.find(
+            item => item.product_id === product.product_id
+        );
+
+        if (exists) {
+            dispatch(removeFromWishlist(exists.id));
+
+        }
+        else {
+            dispatch(addToWishlist({
+                id: crypto.randomUUID(),
+                product_id: product.product_id,
+                title: product.title,
+                image: selectedVariant?.image_url || product.image_url,
+                price: selectedVariant?.price || product.price_range.max,
+                size: selectedSize,
+                color: selectedColor
+            }));
+   
+        }
+
     };
 
     return (
@@ -191,7 +220,22 @@ const dispatch = useDispatch();
                                     ADDED 
                                 </div>
                             )}
-                            <div className="wishlist-btn text-[#148c8d] flex items-center w-[170px] justify-center border border-[#148c8d] h-[39px] "><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#148c8d"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>ADD TO WISHLIST</div>
+                            {/* <div className="wishlist-btn text-[#148c8d] flex items-center w-[170px] justify-center border border-[#148c8d] h-[39px] "><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#148c8d"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>ADD TO WISHLIST</div> */}
+                     <div onClick={handleWishlist} className="cart-button text-[#148c8d] flex items-center w-[170px] justify-center border border-[#148c8d] h-[39px] text-[14px] cursor-pointer">
+                                {
+                                    isWishlisted ?
+                                        <>
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="21px" viewBox="0 -960 960 960" width="20px" fill="#148c8d">
+                                                <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
+                                            </svg>ADDED TO WISHLIST
+                                        </> :
+                                        <>
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="21px" viewBox="0 -960 960 960" width="20px" fill="#148c8d"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" /></svg>
+                                            ADD TO WISHLIST
+                                        </>
+                                }
+
+                            </div>
                         </div>
                               <div className="flex gap-1 items-center pt-4">
                                  <p className="text-[#58595b] text-[15px] pr-2">Share

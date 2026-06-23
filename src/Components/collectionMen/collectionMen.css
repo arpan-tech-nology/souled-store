@@ -13,3 +13,9 @@ font-weight: 700;
     }
     
 }
+@media screen and (max-width:326px) {
+     .collection{
+        grid-template-columns: 1fr;
+     }
+    
+}

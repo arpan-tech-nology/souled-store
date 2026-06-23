@@ -22,7 +22,7 @@ import { useState } from "react";
 // import WomenPage from "./womenPage";
 
 
-function SneakerPage({openCart}) {
+function SneakerPage({openCart , sidebarOpen ,setSidebarOpen}) {
     const sneakerProducts = [
         {
             image: "sho-img-1.avif",

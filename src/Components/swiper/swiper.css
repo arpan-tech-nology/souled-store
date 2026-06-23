@@ -14,7 +14,10 @@
 @media screen and (max-width:1000px) {
     
     .swiper-pagination{
-        margin-top: -6px;
+        margin-top: -12px;
         z-index: 9;
+    }
+    .image-padding{
+        padding-bottom: 12px;
     }
 }

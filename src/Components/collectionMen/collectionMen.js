@@ -20,13 +20,15 @@ export default function Collection({buttons,products}){
             }
 
         </div>
-        <div className="collection grid grid-cols-4 gap-4">
+        <div className="flex justify-center">
+        <div className="collection w-[95%] grid grid-cols-4 gap-2">
 
         {
             products.map((item,index)=>(
                 <Card key={index} product={item}/>
             ))
         }
+        </div>
         </div>
         </div>
         </>

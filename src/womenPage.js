@@ -20,7 +20,7 @@ import { useState } from "react";
 
 
 
-function WomenPage({openCart}) {
+function WomenPage({openCart, sidebarOpen ,setSidebarOpen}) {
    
     
     const womenCategory = [

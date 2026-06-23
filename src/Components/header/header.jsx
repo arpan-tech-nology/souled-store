@@ -14,6 +14,8 @@ const totalQuantity = cartItems.reduce((total, item) => {
     
     
     const location=useLocation();
+    const wishlistItems = useSelector(state => state.wishlist.items);
+    const wishlistCount = wishlistItems.length;
 
      
     return(
@@ -51,7 +53,7 @@ const totalQuantity = cartItems.reduce((total, item) => {
                 </ul>
             </div>
             </div>
-            <div className="logo-img w-[110px] flex justify-center items-center">
+            <div className="logo-img w-[95px] flex justify-center items-center">
                 <img className="img w-full" alt="" src="../images/logo.webp"></img>
             </div>
             <div className="search-container  flex w-[32%]  items-center justify-between ">
@@ -75,10 +77,20 @@ const totalQuantity = cartItems.reduce((total, item) => {
 
                     </div>
 
-                    <div className="icon relative">
+                    {/* <div className="icon relative">
                 <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#000000"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
 
-                    </div>
+                    </div> */}
+                    <Link to="/wishlist">
+                        <div className="relative nav-icon items-center"><svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#4b5563"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" /></svg>
+
+                                {wishlistCount > 0 && (
+                                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-[2px] rounded-full">
+                                        {wishlistCount}
+                                    </span>
+                                )}
+                            </div>
+                        </Link>
                     {/* <Link to="/cart"> */}
                     
                     
@@ -110,15 +122,15 @@ const totalQuantity = cartItems.reduce((total, item) => {
                 <ul className=" nav-menu flex w-full items-center justify-between text-[18px] pt-3 pb-3 ">
                    
                     
-                    <li className="flex justify-center item w-full border-[#d3d4d8]  border-r-[1px] relative font-bold"> <Link to="/">MEN</Link></li>
+                    <li className={`${location.pathname ==="/"?"item":""} flex justify-center w-full border-[#d3d4d8]  border-r-[1px]`} > <Link to="/">MEN</Link></li>
 
                     
                     
-                    <li className="flex justify-center border-[#d3d4d8]  border-r-[1px] w-full"><Link to="/womenPage">WOMEN </Link></li>
+                    <li className={`${location.pathname ==="/womenPage"?"item":""}  flex justify-center border-[#d3d4d8]  border-r-[1px] w-full`}><Link to="/womenPage">WOMEN </Link></li>
                    
                   
                     
-                    <li className="flex justify-center w-full">  <Link to="/sneakerPage">SNEAKERS</Link></li>
+                    <li className={`${location.pathname ==="/sneakerPage"?"item":""}  flex justify-center w-full `}><Link to="/sneakerPage">SNEAKERS</Link></li>
                     
                 </ul>
             </div>
