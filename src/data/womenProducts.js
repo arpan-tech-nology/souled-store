@@ -114,7 +114,7 @@ export const womenProducts = [
     "product_id": "9",
     "title": "Denim Jeans",
     "price_range": { "min": "1000", "max": "1300" },
-    "categories":["Trending","Women T-Shirts","Women Shirts",],
+    // "categories":["Trending","Women T-Shirts","Women Shirts",],
     "stock": "40", // 15 + 25
      "tags": ["women"],
     "image_url": "women-new-arrival-img-4.avif",

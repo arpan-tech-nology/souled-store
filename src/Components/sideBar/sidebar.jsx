@@ -11,7 +11,7 @@ import { menSidebarData ,womenSidebarData ,sneakerSidebarData  } from "../../dat
 export default function SideBar() {
     const isOpen = useSelector(state => state.cart.isSidebarOpen);
     const dispatch = useDispatch();
-    const navigate=useNavigate()
+    // const navigate=useNavigate()
     const type = useSelector(state => state.cart.sidebarType);
 
     const handleTabChange = (type) => {
@@ -29,7 +29,7 @@ export default function SideBar() {
     }, [isOpen], [type]);
     const [showCategories, setShowCategories] = useState(true);
     const [showShopAll, setShowShopAll] = useState(false);
-    const [showJuniors, setShowJuniors] = useState(false);
+    // const [showJuniors, setShowJuniors] = useState(false);
     const [showMore, setShowMore] = useState(false);
 
 

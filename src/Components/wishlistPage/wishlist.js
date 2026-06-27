@@ -3,7 +3,7 @@ import { removeFromWishlist } from "../../Redux/WishlistSlice/WishlistSlice";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import { useNavigate } from "react-router-dom";
-import { addToCart } from "../../Redux/CartSlice/cartSlice";
+// import { addToCart } from "../../Redux/CartSlice/cartSlice";
 import "./wishlist.css"
 
 export default function Wishlist({openCart}) {
