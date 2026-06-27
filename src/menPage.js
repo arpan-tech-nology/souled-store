@@ -11,16 +11,17 @@ import SwiperSection from "./Components/swiper/swiper";
 import Curated from "./Components/curated/curated";
 // import Button from "./Components/button/button";
 import Collection from "./Components/collectionMen/collectionMen";
-import SideBar from "./Components/sideBar/sidebar";
+// import SideBar from "./Components/sideBar/sidebar";
 import Header from "./Components/header/header";
 import Footer from "./Components/footer/footer";
+import { menCategory } from "./data/menProducts";
 // import CartSideBar from "./Components/cartSideBar/cartSideBar";
 
 
 import FeatureBar from "./Components/featureBar/featureBar";
 import { menProducts } from "./data/menProducts";
 import './App.css';
-import { useState } from "react";
+// import { useState } from "react";
 // import { Link } from "react-router-dom";
 // import WomenPage from "./womenPage";
 
@@ -79,17 +80,7 @@ function MenPage({openCart,sidebarOpen ,setSidebarOpen}) {
 
 
   // ]
-  const menCategory = [
-    { image: "../images/men-category-img-1.avif" },
-    { image: "../images/men-category-img-2.avif" },
-    { image: "../images/men-category-img-3.avif" },
-    { image: "../images/men-category-img-4.avif" },
-    { image: "../images/men-category-img-5.avif" },
-    { image: "../images/men-category-img-6.avif" },
-    { image: "../images/men-category-img-1.avif" },
-    { image: "../images/men-category-img-2.avif" },
-    { image: "../images/men-category-img-3.avif" },
-  ]
+  
   const menSlides1 = [
     { image: "../images/swiper-img-1.avif" },
     { image: "../images/swiper-img-2.avif" },
@@ -180,52 +171,7 @@ function MenPage({openCart,sidebarOpen ,setSidebarOpen}) {
   //   },
 
   // ]
-  const sideBarImages = [
-    {
-      image_url: "sidebar-img-1.avif",
-      title: "Summer Home",
-
-    },
-    {
-      image_url: "sidebar-img-4.avif",
-      title: "Hot Merch",
-
-    },
-    {
-      image_url: "sidebar-img-3.avif",
-      title: "collab Kicks",
-
-    },
-    {
-      image_url: "sidebar-img-4.avif",
-      title: "Culter Code",
-
-    },
-    {
-      image_url: "sidebar-img-1.avif",
-      title: "Summer Home",
-
-    },
-    {
-      image_url: "sidebar-img-4.avif",
-      title: "Hot Merch",
-
-    },
-    {
-      image_url: "sidebar-img-3.avif",
-      title: "collab Kicks",
-
-    },
-    {
-      image_url: "sidebar-img-4.avif",
-      title: "Culter Code",
-
-    },
-
-
-
-
-  ]
+ 
   const menCategories=[
     "Trending",
     "Oversized T-shirts",
@@ -236,10 +182,9 @@ function MenPage({openCart,sidebarOpen ,setSidebarOpen}) {
     "Men Pants",
     "Men Joggers",
     "Men Jackets",
-    "Men High Top Sneakers",
-    "Men Low Top Sneakers",
+   
   ]
-  const [sideBar, setSideBar] = useState(false);
+  // const [sideBar, setSideBar] = useState(false);
   // const [cartSideBar ,setCartSideBar]=useState(false);
 
 
@@ -250,26 +195,16 @@ function MenPage({openCart,sidebarOpen ,setSidebarOpen}) {
 
       <div id="men-page">
         
-        <Header toggleSideBar={() => setSideBar(true)} cartSideBar={openCart} />
-
-
-        <SideBar isOpen={sideBar} closeSideBar={() => setSideBar(false)}>
-          <CardSlider products={sideBarImages} ></CardSlider>
-
-          <MenCategory cards={menCategory}></MenCategory>
-          <CardSlider products={sideBarImages} ></CardSlider>
-
-
-        </SideBar>
+        <Header />
       
-        <SwiperSection className="slider1" slides={menSlides1} />
-        <SwiperSection className="slider2 hidden" slides={menSlides2} />
+        <SwiperSection className="slider1" slides={menSlides1} tag="men"/>
+        <SwiperSection className="slider2 hidden" slides={menSlides2} tag="men" />
 
         <FeatureBar />
         <Heading>LATEST DROPS</Heading>
 
         <div className="pagination">
-          <SwiperSection slides={menSlides3}></SwiperSection>
+          <SwiperSection slides={menSlides3} tag="men"></SwiperSection>
 
         </div>
         <Heading>NEW ARRIVALS</Heading>

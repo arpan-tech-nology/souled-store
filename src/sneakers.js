@@ -11,85 +11,74 @@ import SwiperSection from "./Components/swiper/swiper";
 import Curated from "./Components/curated/curated";
 // import Button from "./Components/button/button";
 import Collection from "./Components/collectionMen/collectionMen";
-import SideBar from "./Components/sideBar/sidebar";
+// import SideBar from "./Components/sideBar/sidebar";
 import Header from "./Components/header/header";
 import Footer from "./Components/footer/footer";
 
 
 import FeatureBar from "./Components/featureBar/featureBar";
 import './App.css';
-import { useState } from "react";
+// import { useState } from "react";
+import { sneakerCategory } from "./data/sneaker";
+import { sneakerProducts } from "./data/sneaker";
 // import WomenPage from "./womenPage";
 
 
 function SneakerPage({openCart , sidebarOpen ,setSidebarOpen}) {
-    const sneakerProducts = [
-        {
-            image: "sho-img-1.avif",
-            title: "Black panther:Claws",
-            category: "Oversized Full sleeve T-Shirts",
-            price: "1499"
-        },
-        {
-            image: "sho-img-2.avif",
-            title: "Looney Tunes:IT's Bugs",
-            category: "Oversized T-Shirts",
-            price: "1099",
-        },
-        {
-            image: "sho-img-3.avif",
-            title: "Oversized T-shirt:Wan Blue",
-            category: "Oversized T-Shirts",
-            price: "1099"
-        },
-        {
-            image: "sho-img-4.avif",
-            title: "Cotton Linen:Champagne",
-            category: "Cotton Linen Shirt",
-            price: "1799"
-        },
-        {
-            image: "sho-img-3.avif",
-            title: "Oversized T-shirt:Wan Blue",
-            category: "Oversized T-Shirts",
-            price: "1099"
-        },
-        {
-            image: "sho-img-1.avif",
-            title: "Black panther:Claws",
-            category: "Oversized Full sleeve T-Shirts",
-            price: "1499"
-        },
-        {
-            image: "sho-img-4.avif",
-            title: "Cotton Linen:Champagne",
-            category: "Cotton Linen Shirt",
-            price: "1009"
-        },
-        {
-            image: "sho-img-1.avif",
-            title: "Black panther:Claws",
-            category: "Oversized Full sleeve T-Shirts",
-            price: "1499"
-        },
+    // const sneakerProducts = [
+    //     {
+    //         image: "sho-img-1.avif",
+    //         title: "Black panther:Claws",
+    //         category: "Oversized Full sleeve T-Shirts",
+    //         price: "1499"
+    //     },
+    //     {
+    //         image: "sho-img-2.avif",
+    //         title: "Looney Tunes:IT's Bugs",
+    //         category: "Oversized T-Shirts",
+    //         price: "1099",
+    //     },
+    //     {
+    //         image: "sho-img-3.avif",
+    //         title: "Oversized T-shirt:Wan Blue",
+    //         category: "Oversized T-Shirts",
+    //         price: "1099"
+    //     },
+    //     {
+    //         image: "sho-img-4.avif",
+    //         title: "Cotton Linen:Champagne",
+    //         category: "Cotton Linen Shirt",
+    //         price: "1799"
+    //     },
+    //     {
+    //         image: "sho-img-3.avif",
+    //         title: "Oversized T-shirt:Wan Blue",
+    //         category: "Oversized T-Shirts",
+    //         price: "1099"
+    //     },
+    //     {
+    //         image: "sho-img-1.avif",
+    //         title: "Black panther:Claws",
+    //         category: "Oversized Full sleeve T-Shirts",
+    //         price: "1499"
+    //     },
+    //     {
+    //         image: "sho-img-4.avif",
+    //         title: "Cotton Linen:Champagne",
+    //         category: "Cotton Linen Shirt",
+    //         price: "1009"
+    //     },
+    //     {
+    //         image: "sho-img-1.avif",
+    //         title: "Black panther:Claws",
+    //         category: "Oversized Full sleeve T-Shirts",
+    //         price: "1499"
+    //     },
 
 
 
-    ]
-    const sneakerCategory = [
-        { image: "../images/category-sho-img-1.avif" },
-        { image: "../images/category-sho-img-2.avif" },
-        { image: "../images/category-sho-img-3.avif" },
-        { image: "../images/category-sho-img-4.avif" },
-        { image: "../images/category-sho-img-5.avif" },
-        { image: "../images/category-sho-img-6.avif" },
-         { image: "../images/category-sho-img-1.avif" },
-        { image: "../images/category-sho-img-2.avif" },
-        { image: "../images/category-sho-img-3.avif" },
-
-
-      
-    ]
+    // ]
+   
     const sneakerSlides1 = [
         { image: "../images/sneaker-swiper-img-1.avif" },
         { image: "../images/sneaker-swiper-img-2.avif" },
@@ -129,106 +118,8 @@ function SneakerPage({openCart , sidebarOpen ,setSidebarOpen}) {
 
     ]
 
-    // const images = [
-    //     {
-    //         default: "./images/men-category-img-1.avif",
-    //         hover: "./images/men-category-img-2.avif",
-    //         title: "Black panther:Claws",
-    //         category: "Oversized Full sleeve T-Shirts",
-    //         price: "1499"
-
-    //     },
-    //     {
-    //         default: "./images/men-category-img-5.avif",
-    //         hover: "./images/men-category-img-6.avif", title: "Black panther:Claws",
-    //         category: "Oversized Full sleeve T-Shirts",
-    //         price: "1499"
-    //     },
-    //     {
-    //         default: "./images/men-category-img-6.avif",
-    //         hover: "./images/men-category-img-1.avif", title: "Black panther:Claws",
-    //         category: "Oversized Full sleeve T-Shirts",
-    //         price: "1499"
-    //     },
-    //     {
-    //         default: "./images/men-category-img-1.avif",
-    //         hover: "./images/men-category-img-2.avif", title: "Black panther:Claws",
-    //         category: "Oversized Full sleeve T-Shirts",
-    //         price: "1499"
-    //     },
-    //     {
-    //         default: "./images/men-category-img-5.avif",
-    //         hover: "./images/men-category-img-6.avif", title: "Black panther:Claws",
-    //         category: "Oversized Full sleeve T-Shirts",
-    //         price: "1499"
-    //     },
-    //     {
-    //         default: "./images/men-category-img-5.avif",
-    //         hover: "./images/men-category-img-6.avif",
-    //          title: "Black panther:Claws",
-    //         category: "Oversized Full sleeve T-Shirts",
-    //         price: "1499"
-    //     },
-    //     {
-    //         default: "./images/men-category-img-6.avif",
-    //         hover: "./images/men-category-img-1.avif", title: "Black panther:Claws",
-    //         category: "Oversized Full sleeve T-Shirts",
-    //         price: "1499"
-    //     },
-    //     {
-    //         default: "./images/men-category-img-1.avif",
-    //         hover: "./images/men-category-img-2.avif", title: "Black panther:Claws",
-    //         category: "Oversized Full sleeve T-Shirts",
-    //         price: "1499"
-    //     },
-
-    // ]
-    const sideBarImages = [
-        {
-            image: "sidebar-img-1.avif",
-            title: "Summer Home",
-    
-        },
-        {
-            image: "sidebar-img-4.avif",
-            title: "Hot Merch",
-        
-        },
-        {
-            image: "sidebar-img-3.avif",
-            title: "collab Kicks",
-         
-        },
-        {
-            image: "sidebar-img-4.avif",
-            title: "Culter Code",
    
-        },
-         {
-            image: "sidebar-img-1.avif",
-            title: "Summer Home",
-    
-        },
-        {
-            image: "sidebar-img-4.avif",
-            title: "Hot Merch",
-        
-        },
-        {
-            image: "sidebar-img-3.avif",
-            title: "collab Kicks",
-         
-        },
-        {
-            image: "sidebar-img-4.avif",
-            title: "Culter Code",
    
-        },
-       
-
-
-
-    ]
     const sneakersCategory=[
      'Trending',
       'Men High Top Sneakers',
@@ -236,24 +127,24 @@ function SneakerPage({openCart , sidebarOpen ,setSidebarOpen}) {
       'Men Mid Top Sneakers',
       'Women Mid Top Sneakers',
       'Women Low Top Sneakers',
-      'Socks'
+      
   ]
-    const [sideBar ,setSideBar]=useState(false);
+  
 
     return (
         <>
    
         <div id="men-page">
-           <Header toggleSideBar={() => setSideBar(true)} cartSideBar={openCart} />
+           <Header />
 
-            <SideBar isOpen={sideBar} closeSideBar={()=>setSideBar(false)}>
+            {/* <SideBar isOpen={sideBar} closeSideBar={()=>setSideBar(false)}>
                 <CardSlider products={sideBarImages} ></CardSlider>
                 
             <MenCategory cards={sneakerCategory}></MenCategory>
                 <CardSlider products={sideBarImages} ></CardSlider>
 
                 
-            </SideBar>
+            </SideBar> */}
             {/* <div className="max-w-[1500px] flex flex-col justify-center items-center"> */}
             {/* <HeroSection /> */}
             <SwiperSection className="slider1" slides={sneakerSlides1} />

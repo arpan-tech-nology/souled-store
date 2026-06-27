@@ -1,0 +1,43 @@
+@media screen and (max-width:699px){
+    .cart-width{
+
+        width: 400px;
+    }
+}
+@media screen and (max-width:405px){
+    .cart-width{
+
+        width: 330px;
+    }
+     .price-display{
+        display: flex;
+
+     }
+     .price{
+        display: none;
+
+     }
+     .cart-btn{
+        flex-direction: column;
+     }
+     .cart-btn .width{
+        width: 100px;
+     }
+     .cart-btn .width-quantity{
+        width: 70px;
+     }
+     .remove-move-btn{
+        flex-direction: column;
+        /* width: 300px; */
+
+     }
+
+}
+@media screen and (max-width:329px){
+    .cart-width{
+
+        width: 300px;
+    }
+
+    
+}

@@ -2,9 +2,9 @@ import Header from "../header/header"
 import Footer from "../footer/footer"
 import "./productPage.css"
 import { useParams } from "react-router-dom"
-import { useSelector } from "react-redux"
+// import { useSelector } from "react-redux"
 
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/CartSlice/cartSlice";
@@ -12,8 +12,10 @@ import { addToCart } from "../../Redux/CartSlice/cartSlice";
 import CartSideBar from "../cartSideBar/cartSideBar";
 import { allProducts } from "../../data/allProducts";
 import { useLocation } from "react-router-dom";
-import { addToWishlist , removeFromWishlist } from "../../Redux/WishlistSlice/WishlistSlice";
-// import CartSideBar from "../cartSideBar/cartSideBar";
+// import { useLocation } from "react-router-dom"
+import useWishlist from "../handelWishlist";
+// import { addToWishlist , removeFromWishlist } from "../../Redux/WishlistSlice/WishlistSlice";
+
 
 export default function ProductPage() {
 const { id } = useParams();
@@ -28,9 +30,13 @@ const [selectedColor,setSelectedColor]=useState("");
 const [error, setError] = useState("");
 const [cartStatus, setCartStatus] = useState("idle");
 const [quantity, setQuantity] = useState(1);
+
+
 const selectedVariant = product.variants.find(v => v.size === selectedSize &&
         v.color === selectedColor
     );
+const isOutOfStock = selectedSize && selectedColor && !selectedVariant;
+
 
 //    const [sideBar, setSideBar] = useState(false);
   const [cartSideBar ,setCartSideBar]=useState(false);
@@ -76,7 +82,8 @@ const dispatch = useDispatch();
                 price: selectedVariant?.price || product.price_range.max,
                 size: selectedSize,
                 color: selectedColor,
-                quantity: quantity
+                quantity,
+                stock:Number(selectedVariant?.stock || product.stock)
             }));
             setCartStatus("added");
             setTimeout(() => {
@@ -85,46 +92,113 @@ const dispatch = useDispatch();
 
         }, 2000);
     };
-    const wishlistItems = useSelector(state => state.wishlist.items);
-    const isWishlisted = wishlistItems.some(
-        item => item.product_id === product.product_id
-    );
-    const handleWishlist = () => {
+    const [openSection, setOpenSection] = useState(null);
+    const [sizeChart, setSizeChart] = useState("size");
+    const [openSizeChart, setOpenSizeChart] = useState(false);
 
-        const exists = wishlistItems.find(
-            item => item.product_id === product.product_id
-        );
-
-        if (exists) {
-            dispatch(removeFromWishlist(exists.id));
-
-        }
-        else {
-            dispatch(addToWishlist({
-                id: crypto.randomUUID(),
-                product_id: product.product_id,
-                title: product.title,
-                image: selectedVariant?.image_url || product.image_url,
-                price: selectedVariant?.price || product.price_range.max,
-                size: selectedSize,
-                color: selectedColor
-            }));
-   
-        }
-
+    const toggleSection = (section) => {
+        setOpenSection(openSection === section ? null : section);
     };
+    const [toast, setToast] = useState({
+        show: false,
+        message: "",
+    });
+    const { toggleWishlist, isWishlisted } = useWishlist();
+
+const handleWishlist = (e) => {
+  e.stopPropagation();
+
+  const result = toggleWishlist(product);
+
+  if (result) {
+    setToast({
+      show: true,
+      message: result.message,
+    });
+
+    setTimeout(() => {
+      setToast({ show: false, message: "" });
+    }, 2000);
+  }
+};
+   const availableStock = selectedVariant
+        ? Number(selectedVariant.stock)
+        : Number(product.stock);
+
+    useEffect(() => {
+        if (selectedVariant) {
+            setQuantity(prev =>
+                Math.min(prev, Number(selectedVariant.stock))
+            );
+        }
+    }, [selectedVariant]);
 
     return (
         <>
-            {/* <Header /> */}
+           
              <Header cartSideBar={()=>setCartSideBar(true)} />
                       <CartSideBar isOpen={cartSideBar} closeSideBar={() => setCartSideBar(false)}/>
-            {/* <SideBar isOpen={sideBar} closeSideBar={() => setSideBar(false)}>
-                      <CardSlider products={sideBarImages} ></CardSlider>
-                      <MenCategory cards={menCategory}></MenCategory>
-                      <CardSlider products={sideBarImages} ></CardSlider>
-            </SideBar> */}
+          
             <div className="w-full flex  justify-center items-center">
+                    <div className={`${openSizeChart ? " w-full h-full fixed flex overflow-hidden top-0 z-[999]" : "hidden"}`}>
+                <div className="w-[500px] cartsidebar-width cart-sidebar bg-white z-[9999] overflow-y-auto right-0 absolute h-full sidebar flex flex-col items-center">
+                    <div className="flex justify-between w-full p-4 shadow-[0px_4px_4px_0px_gray] font-bold text-[16px]">Size Chart-{product.title}
+                        <svg onClick={() => setOpenSizeChart(false)} className="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
+
+                    </div>
+                    <div className="flex p-4 justify-between items-center w-full border-b-2 border-b-gray-200 font-bold cursor-pointer">
+                        <div onClick={() => setSizeChart("size")} className={`${sizeChart === "size" ? "text-[#148c8d]" : "text-[#909398] sizetext"}`}>Size Chart</div>
+                        <div onClick={() => setSizeChart("fit")} className={`${sizeChart === "fit" ? "text-[#148c8d]" : "text-[#909398] sizetext"}`}>Fit Guide</div>
+                        <div onClick={() => setSizeChart("measure")} className={`${sizeChart === "measure" ? "text-[#148c8d]" : "text-[#909398] sizetext"}`}>How To Measure</div>
+                    </div>
+                    {sizeChart === "size" &&
+                        <div className="w-full">
+                            <div className="flex px-5 py-3 justify-between w-full font-bold text-[15px]">
+                                <div>Size</div>
+                                <div>Length</div>
+                                <div>Shoulder</div>
+                            </div>
+                            <div className="flex w-full justify-between px-6 py-3 border-t border-t-gray-200 text-[#525964]">
+                                <div>XS</div>
+                                <div>28.5</div>
+                                <div>18.5</div>
+                            </div>
+                            <div className="flex w-full justify-between px-6 py-3 border-t border-t-gray-200 text-[#525964]">
+                                <div>S</div>
+                                <div>28.5</div>
+                                <div>19.5</div>
+                            </div>
+                            <div className="flex w-full justify-between px-6 py-3 border-t border-t-gray-200 text-[#525964]">
+                                <div>M</div>
+                                <div>29</div>
+                                <div>20.5</div>
+                            </div>
+                            <div className="flex w-full justify-between px-6 py-3 border-t border-t-gray-200 text-[#525964]">
+                                <div>L</div>
+                                <div>29.5</div>
+                                <div>21</div>
+                            </div>
+                            <div className="flex w-full justify-between px-6 py-3 border-t border-t-gray-200 text-[#525964]">
+                                <div>XL</div>
+                                <div>30.5</div>
+                                <div>21.5</div>
+                            </div>
+                        </div>
+                    }
+                    {sizeChart === "fit" &&
+                        <div>
+                            <img src="https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/sizechart-images/M258F-FG-Mens-Web.jpg?w=640&dpr=2" alt="" />
+                        </div>
+                    }
+                    {sizeChart === "measure" &&
+                        <div>
+                            <img src="https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/sizechart-images/M258F-Measure-Mens-Web.jpg?w=480&dpr=2" alt="" />
+                        </div>
+                    }
+                </div>
+                <div onClick={() => setOpenSizeChart(false)} className="fixed w-full top-0 h-full bg-[rgba(0,0,0,0.4)]"></div>
+
+            </div>
                 <div className="w-[80%] cart-container">
                     <div className="flex text-[14px] pt-8 pb-8 flex-wrap">
                         <span className="text-[#a7a9ac] pl-1">Home </span>
@@ -153,14 +227,15 @@ const dispatch = useDispatch();
                                 <p className="text-[13px] text-[#888] pb-[10px]">Price incl. of all taxes</p>
 
                               <div className="flex">
-                                <h3 className="font-bold text-[#58595b] text-[16px]">{variantData.size.label} <span className="text-[16px] text-[#117a7a] font-normal border-b border-b-[#117a7a]">SIZE CHART</span></h3>
+                                <h3 onClick={()=>setOpenSizeChart(true)} className="font-bold text-[#58595b] text-[16px]">{variantData.size.label} <span className="text-[16px] text-[#117a7a] font-normal border-b border-b-[#117a7a] cursor-pointer">SIZE CHART</span></h3>
                               </div>
+            
                               
 
                                 <div className="flex gap-4 pt-4">
                                  
                                {Object.values(variantData.size.values[0]).map((val) => (
-                                <div key={val.key} onClick={() => { setSelectedSize(val.key); setSelectedColor("") }} className={`${selectedSize === val.key ? "bg-black text-white" : "bg-white text-[#58595b]"} rounded-[5px] text-[#58595b] border-[2px] border-[#ccc] flex justify-center items-center p-1 w-[45px] }`}>{val.label}</div>
+                                <div key={val.key} onClick={() => { setSelectedSize(val.key) }} className={`${selectedSize === val.key ? "bg-black text-white" : "bg-white text-[#58595b]"} rounded-[5px] text-[#58595b] border-[2px] border-[#ccc] flex justify-center items-center p-1 w-[45px] }`}>{val.label}</div>
                             ))}
                                 </div>
                                
@@ -185,49 +260,61 @@ const dispatch = useDispatch();
                                 </div>
                             </>
                         )}
-                                <div className="flex ">
+                                {/* <div className="flex ">
                                 <h3 className="font-bold text-[#58595b] text-[16px] ">Size not available?<span className="text-[16px] text-[#117a7a] font-normal border-b border-b-[#117a7a] ml-1">Notify Me</span></h3>
-                              </div>
-                              <div className="flex items-center gap-3 pt-4 pb-4">
-                                <p className="text-[#58595b] text-[15px]">Quantity</p>
-                                <select value={quantity} onChange={(e)=>setQuantity(Number(e.target.value))} className="border rounded-[5px] w-[45px] p-1 h-[30px] text-[14px] ">
-                                  <option value={1}>01</option>
-                                  <option value={2}>02</option>
-                                  <option value={3}>03</option>
-                                  <option value={4}>04</option>
-                                </select>
+                              </div> */}
+                              <div className="flex gap-3 items-center pb-3 pt-3">
+                            <div className="text-[#58595b] text-[14px]">Quantity</div>
+                            <div className="flex items-center border-2 border-[#ccc] rounded-md overflow-hidden">
+                                <button onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+                                    className="pl-2 pr-1 py-1 text-lg">
+                                    -
+                                </button>
 
-                              </div>
+                                <span className="w-[30px] text-center">
+                                    {quantity}
+                                </span>
+
+                                <button onClick={() => setQuantity(prev => Math.min(availableStock, prev + 1))}
+                                    className="pr-2 pl-1 py-1 text-lg"
+                                >
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                        {isOutOfStock && (
+                            <div className="text-red-500 font-semibold mb-4">Out of Stock!</div>
+                        )}
                               {error && (
                             <div className="text-[#a94442] bg-[#f2dede] rounded-[6px] p-3 mb-4 text-[14px]">{error}</div>
                         )}
                              <div className="flex gap-2 cart-btn">
-                            {cartStatus === "idle" && (
-                                <div onClick={handleAddToCart}
-                                    className="bg-[#ec3d25] w-[229px] text-white pt-[8px] pb-[8px] flex justify-center items-center rounded-[3px] font-[700] text-[14px] cursor-pointer">
+                           {cartStatus === "idle" && (
+                                <div onClick={!isOutOfStock ? handleAddToCart : undefined} className={`cart-btn w-[229px] text-white pt-[8px] pb-[8px] flex justify-center items-center rounded-[3px] font-[700] text-[14px]
+                              ${isOutOfStock ? "bg-red-400 cursor-not-allowed opacity-60" : "bg-[#ec3d25] cursor-pointer"}`}>
                                     ADD TO CART
                                 </div>
-                            )}
+                            )} 
 
                             {cartStatus === "adding" && (
-                                <div className="bg-gray-500 w-[229px] text-white pt-[8px] pb-[8px] flex justify-center items-center rounded-[3px] font-[700] text-[14px]">
+                                <div className="bg-gray-500 w-[229px] cart-btn-width text-white pt-[8px] pb-[8px] flex justify-center items-center rounded-[3px] font-[700] text-[14px]">
                                     ADDING TO CART...
                                 </div>
                             )}
 
                             {cartStatus === "added" && (
-                                <div className="bg-green-600 w-[229px] text-white pt-[8px] pb-[8px] flex justify-center items-center rounded-[3px] font-[700] text-[14px]">
+                                <div className="bg-green-600 w-[229px] cart-btn-width text-white pt-[8px] pb-[8px] flex justify-center items-center rounded-[3px] font-[700] text-[14px]">
                                     ADDED 
                                 </div>
                             )}
                             {/* <div className="wishlist-btn text-[#148c8d] flex items-center w-[170px] justify-center border border-[#148c8d] h-[39px] "><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#148c8d"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>ADD TO WISHLIST</div> */}
-                     <div onClick={handleWishlist} className="cart-button text-[#148c8d] flex items-center w-[170px] justify-center border border-[#148c8d] h-[39px] text-[14px] cursor-pointer">
+                     <div onClick={handleWishlist} className="cart-btn-width cart-button text-[#148c8d] flex items-center w-[200px] justify-center border border-[#148c8d] h-[39px] text-[14px] cursor-pointer">
                                 {
-                                    isWishlisted ?
+                                    isWishlisted(product.product_id) ?
                                         <>
                                             <svg xmlns="http://www.w3.org/2000/svg" height="21px" viewBox="0 -960 960 960" width="20px" fill="#148c8d">
                                                 <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
-                                            </svg>ADDED TO WISHLIST
+                                            </svg>REMOVED FROM WISHLIST
                                         </> :
                                         <>
                                             <svg xmlns="http://www.w3.org/2000/svg" height="21px" viewBox="0 -960 960 960" width="20px" fill="#148c8d"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" /></svg>
@@ -249,23 +336,59 @@ const dispatch = useDispatch();
                               <div className="font-bold text-[#282d3] pt-4">
                                 Delivery Details
                               </div>
-                              <div className="border flex justify-between rounded-[6px]   pt-[10px] pb-[10px] pl-[10px] pr-[10px] mt-[15px] mb-[15px]">
+                              {/* <div className="border flex justify-between rounded-[6px]   pt-[10px] pb-[10px] pl-[10px] pr-[10px] mt-[15px] mb-[15px]">
                                 <input className="outline-none w-full text-[#58595b] font-[200] text-[16px] " placeholder="Enter Pincode"/>
                                 <div className="text-[16px] text-[#148c8d] font-[700]">CHECK</div>
-                              </div>
-                              <div className="flex shadow-[0px_1px_2px_rgba(0,0,0,0.2)] gap-2">
+                              </div> */}
+                              <div className="flex shadow-[0px_1px_2px_rgba(0,0,0,0.2)] gap-2 mt-4">
                                 <div className="flex justify-center items-center"><svg className="logo" xmlns=" http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#58595b"><path d="M440-183v-274L200-596v274l240 139Zm80 0 240-139v-274L520-457v274Zm-80 92L160-252q-19-11-29.5-29T120-321v-318q0-22 10.5-40t29.5-29l280-161q19-11 40-11t40 11l280 161q19 11 29.5 29t10.5 40v318q0 22-10.5 40T800-252L520-91q-19 11-40 11t-40-11Zm200-528 77-44-237-137-78 45 238 136Zm-160 93 78-45-237-137-78 45 237 137Z"/></svg></div>
                                 <p>This product is eligible for return or exchange under our 30-day return or exchange policy. No questions asked.</p>
                               </div>
-                              <div className="border border-[rgba(0,0,0,0.125)] text-[#58595b] mt-[40px]">
+                              {/* <div className="border border-[rgba(0,0,0,0.125)] text-[#58595b] mt-[40px]">
                                 <div className="flex justify-between text-[16px] border-b font-[700] p-3">Product Details <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></div>
                                 <div className="flex justify-between text-[16px] border-b font-[700] p-3">Product description <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></div>
                                 <div className="flex justify-between text-[16px] font-[700] p-3">Artist's Details <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></div>
-                              </div>
+                              </div> */}
+                              <div className="border border-[rgba(0,0,0,0.125)] text-[#58595b] mt-4">
+                            <div className="text-[16px] border-b p-3">
+                                <div onClick={() => toggleSection("details")} className="flex justify-between font-[700] cursor-pointer">Product Details
+                                    <svg className={`transition-transform duration-300 ${openSection === "details" ? "rotate-180" : ""}`} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" /></svg>
+                                </div>
+                                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openSection === "details" ? "max-h-[200px] opacity-100 pt-2" : "max-h-0 opacity-0"}`}>Charlie Brown and Snoopy are here to keep things light, breezy, and just the right amount of nostalgic. The fit says weekend, the print says instant mood boost. Style Tip: Style with light-wash jeans for a casual, feel-good look.</div>
+                            </div>
+                            <div className="text-[16px] border-b p-3">
+                                <div onClick={() => toggleSection("description")} className="flex justify-between font-[700] cursor-pointer">Product Description
+                                    <svg className={`transition-transform duration-300 ${openSection === "description" ? "rotate-180" : ""}`} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" /></svg>
+                                </div>
+
+                                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openSection === "description" ? "max-h-[200px] opacity-100 pt-2" : "max-h-0 opacity-0"}`}>Charlie Brown and Snoopy are here to keep things light, breezy, and just the right amount of nostalgic. The fit says weekend, the print says instant mood boost. Style Tip: Style with light-wash jeans for a casual, feel-good look.</div>
+
+                            </div>
+                            <div className="text-[16px] p-3">
+                                <div onClick={() => toggleSection("artist")} className="flex justify-between font-[700] cursor-pointer">Artist's Details
+                                    <svg className={`transition-transform duration-300 ${openSection === "artist" ? "rotate-180" : ""}`} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" /></svg>
+                                </div>
+                                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openSection === "artist" ? "max-h-[200px] opacity-100 pt-2" : "max-h-0 opacity-0"}`}>
+                                    Charlie Brown and Snoopy are here to keep things light, breezy, and just the right amount of nostalgic. The fit says weekend, the print says instant mood boost. Style Tip: Style with light-wash jeans for a casual, feel-good look.
+                                </div>
+
+                            </div>
+
+                        </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div
+                className={`fixed bottom-6 bg-red-500 text-white rounded-[6px] w-max left-1/2 -translate-x-1/2 z-[9999]
+  transition-all duration-300 ease-out
+  ${toast.show
+                        ? "translate-y-0  px-3 py-2"
+                        : " translate-y-12 p-0 pointer-events-none"
+                    }`}
+            >
+                {toast.message}
             </div>
             <Footer />
         </>

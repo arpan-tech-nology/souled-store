@@ -9,29 +9,22 @@ import SwiperSection from "./Components/swiper/swiper";
 import Curated from "./Components/curated/curated";
 // import Button from "./Components/button/button";
 import Collection from "./Components/collectionMen/collectionMen";
-import SideBar from "./Components/sideBar/sidebar";
+// import SideBar from "./Components/sideBar/sidebar";
 import Header from "./Components/header/header";
 import Footer from "./Components/footer/footer";
 import { womenProducts } from "./data/womenProducts";
 
 import FeatureBar from "./Components/featureBar/featureBar";
 import './App.css';
-import { useState } from "react";
+// import { useState } from "react";
+import { womenCategory } from "./data/womenProducts";
 
 
 
 function WomenPage({openCart, sidebarOpen ,setSidebarOpen}) {
    
     
-    const womenCategory = [
-        { image: "../images/category-img-1.avif" },
-        { image: "../images/category-img-2.avif" },
-        { image: "../images/category-img-3.avif" },
-        { image: "../images/category-img-4.avif" },
-           { image: "../images/category-img-1.avif" },
-        { image: "../images/category-img-2.avif" },
-        
-    ]
+  
     const womenSlides1 = [
         { image: "../images/women-swiper-img-1.avif" },
         { image: "../images/women-swiper-img-2.avif" },
@@ -129,52 +122,7 @@ function WomenPage({openCart, sidebarOpen ,setSidebarOpen}) {
 
     // ]
     
-    const sideBarImages = [
-        {
-            image: "sidebar-img-5.avif",
-            title: "Summer Home",
-    
-        },
-        {
-            image: "sidebar-img-6.avif",
-            title: "Hot Merch",
-        
-        },
-        {
-            image: "sidebar-img-7.avif",
-            title: "collab Kicks",
-         
-        },
-        {
-            image: "sidebar-img-8.avif",
-            title: "Culter Code",
    
-        },
-         {
-            image: "sidebar-img-5.avif",
-            title: "Summer Home",
-    
-        },
-        {
-            image: "sidebar-img-6.avif",
-            title: "Hot Merch",
-        
-        },
-        {
-            image: "sidebar-img-7.avif",
-            title: "collab Kicks",
-         
-        },
-        {
-            image: "sidebar-img-8.avif",
-            title: "Culter Code",
-   
-        },
-       
-
-
-
-    ]
     const womenCategories=[
         "Trending",
         "Women T-Shirts",
@@ -184,11 +132,9 @@ function WomenPage({openCart, sidebarOpen ,setSidebarOpen}) {
         "Women Cropped Tops",
         "Women Shorts",
         "Women Dresses",
-        "Women Winter Wear",
-        "Women High Top Sneakers",
-        "Women Low Top Sneakers"
+       
   ]
-    const [sideBar ,setSideBar]=useState(false);
+    // const [sideBar ,setSideBar]=useState(false);
 
     return (
         <>
@@ -198,16 +144,17 @@ function WomenPage({openCart, sidebarOpen ,setSidebarOpen}) {
             {/* <Header></Header> */}
             {/* <Header/> */}
             {/* <Header toggleSideBar={()=>setSideBar(true)} /> */}
-            <Header toggleSideBar={() => setSideBar(true)} cartSideBar={openCart} />
+            <Header />
 
-            <SideBar isOpen={sideBar} closeSideBar={()=>setSideBar(false)}>
+            {/* <SideBar isOpen={sideBar} closeSideBar={()=>setSideBar(false)}>
                 <CardSlider products={sideBarImages} ></CardSlider>
                 
             <MenCategory cards={womenCategory}></MenCategory>
                 <CardSlider products={sideBarImages} ></CardSlider>
 
                 
-            </SideBar>
+            </SideBar> */}
+
             {/* <div className="max-w-[1500px] flex flex-col justify-center items-center"> */}
             {/* <HeroSection /> */}
             <SwiperSection className="slider1" slides={womenSlides1} />

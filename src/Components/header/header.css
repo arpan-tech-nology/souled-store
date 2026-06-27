@@ -75,6 +75,10 @@
          top:-22px;
 
     }
+    .icon:hover::before{
+        display: none;
+    }
+
 }
 @media screen and (max-width:765px) {
     .announcement-bar .text{
@@ -82,6 +86,10 @@
         gap:14px;
         
     }
+        .header-icons{
+            gap: 6px;
+        }
+    
     
 }
 @media screen and (max-width:550px) {
@@ -91,10 +99,14 @@
     .header-category-section .nav-menu{
         font-size: 16px;
     }
-   
-
-    
 }
+
+@media screen and (max-width:400px) {
+     .logo-img{
+        width:85px ;
+     }    
+}
+
 @media screen and (max-width:477px) {
     .announcement-bar .text {
 width: 100%;
@@ -102,5 +114,11 @@ width: 100%;
         .announcement-bar .app {
             width: 200px;
         }
+    
+}
+@media screen and (max-width:395px) {
+    .header-icons{
+        padding-right: 4px;
+    }
     
 }

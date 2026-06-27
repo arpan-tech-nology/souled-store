@@ -20,19 +20,22 @@ font-size: 14px;
 
     }
      .feature-bar .container{
-        /* gap: 1px; */
+  
         width: 100%;
         border-bottom: 1px solid rgb(218, 212, 212);
-        /* justify-content: ; */
-        /* width: 180px; */
+        padding-bottom: 10px;
+      
     }
+
+     .feature-bar .container.padding-top{
+        padding-top: 10px;
+     }
+
     .feature-bar .bar{
         width: 80%;
-        /* background-color: #e8f8f8; */
+  
     }
-    .feature-bar{
-        /* background-color: white!important; */
-    }
+  
 
 
     

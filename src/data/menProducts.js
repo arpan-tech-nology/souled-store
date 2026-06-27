@@ -4,8 +4,9 @@ export const menProducts = [
     "title": "Peanuts:Works Out",
     "price_range": { "min": "700", "max": "900" },
     "stock": "100",
-    "tags": ["men","t-shirt"],
+    "tags": ["men"],
     "image_url":"new-arrival-img-1.avif",
+    "categories":["Trending","Oversized T-shirts","Shirts","Polos",],
     "number_of_variants": "3",
     "variant_options": ["size", "color"],
     "variant_values": [
@@ -48,6 +49,7 @@ export const menProducts = [
     "price_range": { "min": null, "max": "500" },
     "stock": "120", // 50 + 70
      "tags": ["men","t-shirt"],
+    "categories":["Hoodies","Jackets","Men Pants","Men Joggers","Trending"],
     "image_url":"new-arrival-img-2.avif",
     "number_of_variants": "2",
     "variant_options": ["size"],
@@ -77,6 +79,7 @@ export const menProducts = [
     "stock": "50", // 20 + 30
      "tags": ["men","hoodie"],
     "image_url":"new-arrival-img-3.avif",
+    "categories":["Hoodies","Men Joggers","Trending"],
     "number_of_variants": "2",
     "variant_options": ["size", "color"],
     "variant_values": [
@@ -114,6 +117,7 @@ export const menProducts = [
     "stock": "40", // 15 + 25
      "tags": ["men","denim"],
     "image_url":"new-arrival-img-4.avif",
+    "categories":["Trending","Oversized T-shirts","Shirts","Polos",],
     "number_of_variants": "2",
     "variant_options": ["size"],
     "variant_values": [
@@ -142,6 +146,7 @@ export const menProducts = [
     "stock": "50", // 20 + 30
      "tags": ["men","shirt"],
     "image_url":"new-arrival-img-1.avif",
+    "categories":["Hoodies","Jackets","Men Pants","Men Joggers","Trending"],
     "number_of_variants": "2",
     "variant_options": ["size", "color"],
     "variant_values": [
@@ -172,3 +177,61 @@ export const menProducts = [
     ]
   }
 ];
+
+ export const sideBarImagesMen = [
+    {
+      image_url: "sidebar-img-1.avif",
+      title: "Summer Home",
+
+    },
+    {
+      image_url: "sidebar-img-4.avif",
+      title: "Hot Merch",
+
+    },
+    {
+      image_url: "sidebar-img-3.avif",
+      title: "collab Kicks",
+
+    },
+    {
+      image_url: "sidebar-img-4.avif",
+      title: "Culter Code",
+
+    },
+    {
+      image_url: "sidebar-img-1.avif",
+      title: "Summer Home",
+
+    },
+    {
+      image_url: "sidebar-img-4.avif",
+      title: "Hot Merch",
+
+    },
+    {
+      image_url: "sidebar-img-3.avif",
+      title: "collab Kicks",
+
+    },
+    {
+      image_url: "sidebar-img-4.avif",
+      title: "Culter Code",
+
+    },
+
+
+
+
+  ]
+  export const menCategory = [
+    { image: "../images/men-category-img-1.avif" },
+    { image: "../images/men-category-img-2.avif" },
+    { image: "../images/men-category-img-3.avif" },
+    { image: "../images/men-category-img-4.avif" },
+    { image: "../images/men-category-img-5.avif" },
+    { image: "../images/men-category-img-6.avif" },
+    { image: "../images/men-category-img-1.avif" },
+    { image: "../images/men-category-img-2.avif" },
+    { image: "../images/men-category-img-3.avif" },
+  ]

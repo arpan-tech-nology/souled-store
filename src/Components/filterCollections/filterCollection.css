@@ -1,6 +1,80 @@
+
+.filter-section{
+    scrollbar-width: none;
+}
+.apply-btn{
+    display: none;
+}
 @media screen and (max-width:1088px) {
  .all-filter-images{
 grid-template-columns: repeat(2, minmax(0, 1fr))!important;
  }
+}
+@media screen and (max-width:900px) {
+    .filter-collection-right-section .collection{
 
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    
+}
+@media screen and (max-width:528px) {
+    .filter-collection-right-section .collection{
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+}
+@media screen and (max-width:331px) {
+    .filter-collection-right-section .collection{
+
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    
+}
+@media screen and (max-width:373px) {
+  .filter-sort{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+    
+}
+
+@media screen and (max-width:750px){
+    .apply-btn{
+        display: flex;
+    }
+    .filter-section{
+        transform: translateX(-153%);
+       width: 0;
+        transition: transform 0.4s ease;
+    
+    }
+
+    .filter-section.active{
+         padding: 10px;
+        top:0px;
+        width: 350px;
+        position: fixed;
+        height: 100%;
+        transform: translateX(-3%);
+        z-index: 50;
+    }
+
+
+    .filter-button{
+        display: flex;
+    }
+
+    .filter-overlay{
+        transform: translateX(0px);
+        transition: transform 0.2s ease;
+
+    }
+
+  .filter-collection-right-section .category-images{
+    padding-left: 0;
+    padding-right: 14px;
+  }
+    
 }

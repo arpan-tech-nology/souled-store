@@ -10,8 +10,7 @@ export default function MenCategory({ cards,tag}){
         <div className="men-category grid grid-cols-3 gap-4 w-[80%] ">
         {cards.map((item)=>(
             
-            <img onClick={() =>
-                            navigate("/filter", { state: { tag } })} alt="" src={item.image}></img>
+            <img onClick={() => navigate(`/filter/${tag}`)} alt="" src={item.image}></img>
         ))}
      
         </div>

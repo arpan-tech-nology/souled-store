@@ -9,7 +9,7 @@ import { Autoplay, Navigation ,Pagination } from 'swiper/modules';
 
 
 // import './swiper.css'
-export default function CardSlider({products}) {
+export default function CardSlider({products ,sidebar=false}) {
     return (
         <>
            
@@ -24,19 +24,30 @@ export default function CardSlider({products}) {
 
                         loop={true}
                         spaceBetween={10}
-                        slidesPerView={2}
-                        slidesPerGroup={2}
+                        slidesPerView={4}
+                        slidesPerGroup={4}
                         centeredSlides={false}
                         // slidesPerGroupSkip={1}
                         grabCursor={true}
-                        breakpoints={{
-                            770: {
-                                slidesPerView: 4,
-                                slidesPerGroup: 4,
-                            },
+                        // breakpoints={{
+
+                        //     770: {
+                        //         slidesPerView: 4,
+                        //         slidesPerGroup: 4,
+                        //     },
 
                            
-                        }}
+                        // }}
+                        breakpoints={
+                        sidebar?{
+                            0:{slidesPerView:2,slidesPerGroup:1},
+                            380:{slidesPerView:3,slidesPerGroup:1},
+                            
+                        }:
+                        {
+                        0:{slidesPerView:2,slidesPerGroup:2},
+                        770:{slidesPerView:4}
+                    }}
                          pagination={{
           clickable: true,
         }}

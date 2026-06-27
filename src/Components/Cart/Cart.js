@@ -2,10 +2,6 @@ import Footer from "../footer/footer";
 import Header from "../header/header";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import { useDispatch } from "react-redux";
-// import { useState } from "react";
-
-// import { removeFromCart, updateQuantity } from "../../Redux/CartSlice/cartSlice";
 
 export default function Cart() {
     const cartItems = useSelector(state => state.cart.items);
@@ -13,13 +9,10 @@ export default function Cart() {
         return total + Number(item.price) * item.quantity;
     }, 0);
 
-    // const totalProducts = cartItems.length;
-    // const [removingId, setRemovingId] = useState(null);
-    // const dispatch = useDispatch();
     const navigate = useNavigate();
     return (
         <>
-            <Header />
+            <Header/>
             <div>
                 <div className="flex justify-center font-[700] text-[14px] text-[#58595b] p-[10px] mt-[6px] gap-2 border-b border-b-[#eee]">
                     <div className="text-[#117a7a]">MY BAG</div>
@@ -31,10 +24,10 @@ export default function Cart() {
                 {cartItems.length === 0 ? (
                      <div className=" h-full flex justify-center items-center flex-col">
                         <div className="">
-                            <img alt="" src="/images/emptyCart.avif"></img>
+                            <img className="" alt="" src="/images/emptyCart.avif"></img>
                         </div>
-
                     <p className="text-[20px]  flex justify-center items-center pt-4">Your shopping cart is empty!</p>
+                
                     </div>
                 )
                     : (

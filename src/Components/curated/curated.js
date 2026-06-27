@@ -2,11 +2,11 @@ import "./curated.css"
 export default function Curated({image=[]}){
     return(
         <>
-        <div className="flex justify-center">
-        <div className="curated-images grid grid-cols-4 gap-4">
+        <div className="flex justify-center w-full">
+        <div className="curated-images w-[98%] grid grid-cols-4 gap-4">
             {
                 image.map((items)=>(
-                    <img alt="" src={items.image}></img>
+                    <img className="hower-img cursor-pointer"  alt="" src={items.image}></img>
 
                 ))
 

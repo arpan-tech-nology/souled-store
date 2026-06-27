@@ -3,11 +3,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay,Navigation,Pagination } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
 import './swiper.css'
 
-export default function SwiperSection({slides=[] , className}){
+export default function SwiperSection({slides=[] , className ,tag}){
+    const navigate=useNavigate();
     return(
         <>
+        
     
    <div className={className}>
     <Swiper
@@ -32,7 +35,7 @@ export default function SwiperSection({slides=[] , className}){
         {
             slides.map((item)=>(
                 <SwiperSlide>
-                    <img alt='' className='w-full image-padding' src={item.image}></img>
+                    <img onClick={() => navigate(`/filter/${tag}`)} alt='' className='w-full image-padding' src={item.image}></img>
                 </SwiperSlide>
             ))
         }

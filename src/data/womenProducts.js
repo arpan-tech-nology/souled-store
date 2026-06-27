@@ -1,11 +1,12 @@
 export const womenProducts = [
   {
-    "product_id": "1",
+    "product_id": "6",
     "title": "Peanuts:Works Out",
     "price_range": { "min": "700", "max": "900" },
     "stock": "100",
-    "tags": ["women","women-top"],
+    "tags": ["women"],
     "image_url": "women-new-arrival-img-1.avif",
+    "categories":["Trending","Women T-Shirts","Women Shirts",],
     "number_of_variants": "3",
     "variant_options": ["size", "color"],
     "variant_values": [
@@ -43,12 +44,13 @@ export const womenProducts = [
   },
 
   {
-    "product_id": "2",
+    "product_id": "7",
     "title": "Casual T-Shirt",
     "price_range": { "min": null, "max": "500" },
     "stock": "120", // 50 + 70
-     "tags": ["women","women-top"],
+     "tags": ["women"],
     "image_url": "women-new-arrival-img-2.avif",
+    "categories":["Trending","Women Jeans","Women Pants","Women Cropped Tops",],
     "number_of_variants": "2",
     "variant_options": ["size"],
     "variant_values": [
@@ -71,12 +73,13 @@ export const womenProducts = [
   },
 
   {
-    "product_id": "3",
+    "product_id": "8",
     "title": "Sports Hoodie",
     "price_range": { "min": "1200", "max": "1500" },
     "stock": "50", // 20 + 30
-     "tags": ["women","women-jean"],
+     "tags": ["women"],
     "image_url": "women-new-arrival-img-3.avif",
+    "categories":["Trending",  "Women Cropped Tops", "Women Shorts","Women Dresses",],
     "number_of_variants": "2",
     "variant_options": ["size", "color"],
     "variant_values": [
@@ -108,12 +111,14 @@ export const womenProducts = [
   },
 
   {
-    "product_id": "4",
+    "product_id": "9",
     "title": "Denim Jeans",
     "price_range": { "min": "1000", "max": "1300" },
+    "categories":["Trending","Women T-Shirts","Women Shirts",],
     "stock": "40", // 15 + 25
-     "tags": ["women","women-jacket"],
+     "tags": ["women"],
     "image_url": "women-new-arrival-img-4.avif",
+    "categories":["Trending","Women Pants","Women Cropped Tops", ],    
     "number_of_variants": "2",
     "variant_options": ["size"],
     "variant_values": [
@@ -136,12 +141,13 @@ export const womenProducts = [
   },
 
   {
-    "product_id": "5",
+    "product_id": "10",
     "title": "Summer Shirt",
     "price_range": { "min": null, "max": "750" },
     "stock": "50", // 20 + 30
-     "tags": ["women","women-frock"],
+     "tags": ["women"],
     "image_url": "women-new-arrival-img-1.avif",
+    "categories":["Trending", "Women Shorts","Women Dresses",],    
     "number_of_variants": "2",
     "variant_options": ["size", "color"],
     "variant_values": [
@@ -172,3 +178,59 @@ export const womenProducts = [
     ]
   }
 ];
+
+export  const sideBarImagesWomen = [
+        {
+            image_url: "sidebar-img-5.avif",
+            title: "Summer Home",
+    
+        },
+        {
+            image_url: "sidebar-img-6.avif",
+            title: "Hot Merch",
+        
+        },
+        {
+            image_url: "sidebar-img-7.avif",
+            title: "collab Kicks",
+         
+        },
+        {
+            image_url: "sidebar-img-8.avif",
+            title: "Culter Code",
+   
+        },
+         {
+            image_url: "sidebar-img-5.avif",
+            title: "Summer Home",
+    
+        },
+        {
+            image_url: "sidebar-img-6.avif",
+            title: "Hot Merch",
+        
+        },
+        {
+            image_url: "sidebar-img-7.avif",
+            title: "collab Kicks",
+         
+        },
+        {
+            image_url: "sidebar-img-8.avif",
+            title: "Culter Code",
+   
+        },
+       
+
+
+
+    ]
+ export   const womenCategory = [
+        { image: "../images/category-img-1.avif" },
+        { image: "../images/category-img-2.avif" },
+        { image: "../images/category-img-3.avif" },
+        { image: "../images/category-img-4.avif" },
+           { image: "../images/category-img-1.avif" },
+        { image: "../images/category-img-2.avif" },
+        
+    ]    
