@@ -17,6 +17,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.slider{
+    position: relative;
+}
 
 
 @media screen and (max-width:1000px) {
@@ -33,5 +36,6 @@
     .next-btn{
         display: none;
     }
+   
 }
 

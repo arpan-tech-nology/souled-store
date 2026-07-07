@@ -11,16 +11,23 @@ import CartSideBar from "./Components/cartSideBar/cartSideBar";
 // import { useState } from "react";
 import Wishlist from "./Components/wishlistPage/wishlist";
 import SideBar from "./Components/sideBar/sidebar";
+import ScrollToTop from "./scrollToTop";
+import UserContext from "./userContext";
 
 
 function App() {
     // const [cartSideBar ,setCartSideBar]=useState(false);
     // const [sidebarOpen, setSidebarOpen]=useState(false);
-    
+    const user={
+        name:"John Smith",
+        age:22,
+    };
     
     return (
         <>
+        <UserContext.Provider value={user}>
     <Router>
+        <ScrollToTop/>
                   <CartSideBar/>
                   <SideBar></SideBar>
         
@@ -38,6 +45,7 @@ function App() {
 
         </Routes>
     </Router>
+    </UserContext.Provider>
        
 
 

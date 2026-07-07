@@ -203,8 +203,8 @@ function MenPage({openCart,sidebarOpen ,setSidebarOpen}) {
         <FeatureBar />
         <Heading>LATEST DROPS</Heading>
 
-        <div className="pagination">
-          <SwiperSection slides={menSlides3} tag="men"></SwiperSection>
+        <div className="">
+          <SwiperSection className="slider" slides={menSlides3} tag="men"></SwiperSection>
 
         </div>
         <Heading>NEW ARRIVALS</Heading>

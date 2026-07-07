@@ -2,11 +2,9 @@
     position: relative!important;
     margin-top: 35px;
 }
-.prev-btn ,.next-btn{
-    position: absolute;
-    top:35%;
+    .swiper-button-prev ,.swiper-button-next{
     filter:drop-shadow(2px 2px 4px rgba(12,12,12,0.9));
-    z-index:1;
+    color: white;
 }
 .swiper-button-lock{
     display: flex;
@@ -18,6 +16,6 @@
         z-index: 9;
     }
     .image-padding{
-        padding-bottom: 12px;
+        padding-bottom: 28px;
     }
 }
